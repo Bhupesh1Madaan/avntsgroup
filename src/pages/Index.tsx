@@ -1,10 +1,21 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { ChevronRight, Map, Clock, Shield } from 'lucide-react';
 
 const Index = () => {
+  const [currentPhrase, setCurrentPhrase] = useState(0);
+  const phrases = ["Dream It", "Rent It", "Own It"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPhrase((prev) => (prev + 1) % phrases.length);
+    }, 4000); // Change phrase every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -31,9 +42,17 @@ const Index = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-2xl text-luxury-gold italic font-medium mb-6">
-              Dream it, Rent it, Own it.
-            </p>
+            <div className="h-24 md:h-28 lg:h-32 flex items-center justify-center mb-6">
+              <p
+                key={currentPhrase}
+                className="text-4xl md:text-5xl lg:text-6xl text-luxury-gold italic font-serif font-bold transform transition-all duration-1000 ease-out"
+                style={{
+                  animation: 'popUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                }}
+              >
+                {phrases[currentPhrase]}
+              </p>
+            </div>
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-luxury-black mb-6">
               At AVNTS Autogroup
             </h2>
@@ -49,6 +68,66 @@ const Index = () => {
               <Link to="/services" className="gold-button">
                 Discover Our Services
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Car Brands Conveyor Belt */}
+      <section className="py-12 bg-gray-50 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-serif font-bold text-luxury-black mb-2">Trusted by Leading Brands</h3>
+            <p className="text-gray-600">We work with the world's most prestigious automotive manufacturers</p>
+          </div>
+
+          <div className="relative">
+            <div className="flex animate-scroll items-center space-x-32">
+              {/* First set of logos */}
+              <div className="flex items-center justify-center w-24 h-16 bg-white rounded-lg shadow-sm px-4 flex-shrink-0">
+                <img src="/lovable-uploads/conveyor/BMW.png" alt="BMW" className="w-16 h-12 object-contain" />
+              </div>
+              <div className="flex items-center justify-center w-24 h-16 bg-white rounded-lg shadow-sm px-4 flex-shrink-0">
+                <img src="/lovable-uploads/conveyor/Mercedes-Benz-Logo.png" alt="Mercedes" className="w-16 h-12 object-contain" />
+              </div>
+              <div className="flex items-center justify-center w-24 h-16 bg-white rounded-lg shadow-sm px-4 flex-shrink-0">
+                <img src="/lovable-uploads/conveyor/ferrari.png" alt="Ferrari" className="w-16 h-12 object-contain" />
+              </div>
+              <div className="flex items-center justify-center w-24 h-16 bg-white rounded-lg shadow-sm px-4 flex-shrink-0">
+                <img src="/lovable-uploads/conveyor/Porsche-Logo.png" alt="Porsche" className="w-16 h-12 object-contain" />
+              </div>
+              <div className="flex items-center justify-center w-24 h-16 bg-white rounded-lg shadow-sm px-4 flex-shrink-0">
+                <img src="/lovable-uploads/conveyor/toyota.png" alt="Toyota" className="w-16 h-12 object-contain" />
+              </div>
+              <div className="flex items-center justify-center w-24 h-16 bg-white rounded-lg shadow-sm px-4 flex-shrink-0">
+                <img src="/lovable-uploads/conveyor/hyundai.jpg" alt="Hyundai" className="w-16 h-12 object-contain" />
+              </div>
+              <div className="flex items-center justify-center w-24 h-16 bg-white rounded-lg shadow-sm px-4 flex-shrink-0">
+                <img src="/lovable-uploads/conveyor/kia-logo-png-transparent.png" alt="Kia" className="w-16 h-12 object-contain" />
+              </div>
+
+              {/* Duplicate set for seamless loop */}
+              <div className="flex items-center justify-center w-24 h-16 bg-white rounded-lg shadow-sm px-4 flex-shrink-0">
+                <img src="/lovable-uploads/conveyor/BMW.png" alt="BMW" className="w-16 h-12 object-contain" />
+              </div>
+              <div className="flex items-center justify-center w-24 h-16 bg-white rounded-lg shadow-sm px-4 flex-shrink-0">
+                <img src="/lovable-uploads/conveyor/Mercedes-Benz-Logo.png" alt="Mercedes" className="w-16 h-12 object-contain" />
+              </div>
+              <div className="flex items-center justify-center w-24 h-16 bg-white rounded-lg shadow-sm px-4 flex-shrink-0">
+                <img src="/lovable-uploads/conveyor/ferrari.png" alt="Ferrari" className="w-16 h-12 object-contain" />
+              </div>
+              <div className="flex items-center justify-center w-24 h-16 bg-white rounded-lg shadow-sm px-4 flex-shrink-0">
+                <img src="/lovable-uploads/conveyor/Porsche-Logo.png" alt="Porsche" className="w-16 h-12 object-contain" />
+              </div>
+              <div className="flex items-center justify-center w-24 h-16 bg-white rounded-lg shadow-sm px-4 flex-shrink-0">
+                <img src="/lovable-uploads/conveyor/toyota.png" alt="Toyota" className="w-16 h-12 object-contain" />
+              </div>
+              <div className="flex items-center justify-center w-24 h-16 bg-white rounded-lg shadow-sm px-4 flex-shrink-0">
+                <img src="/lovable-uploads/conveyor/hyundai.jpg" alt="Hyundai" className="w-16 h-12 object-contain" />
+              </div>
+              <div className="flex items-center justify-center w-24 h-16 bg-white rounded-lg shadow-sm px-4 flex-shrink-0">
+                <img src="/lovable-uploads/conveyor/kia-logo-png-transparent.png" alt="Kia" className="w-16 h-12 object-contain" />
+              </div>
             </div>
           </div>
         </div>
