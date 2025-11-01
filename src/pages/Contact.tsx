@@ -59,7 +59,7 @@ const Contact = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-              Contact <span className="text-luxury-gold">Us</span>
+              Contact <span className="text-luxury-silver">Us</span>
             </h1>
             <p className="text-xl text-white">
               Reach out to us for inquiries, reservations, or special requests.
@@ -186,8 +186,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold mb-1">Our Location</h3>
-                    <p className="text-luxury-gray">1940 Eglinton Ave East</p>
-                    <p className="text-luxury-gray">Scarborough, ON, M1L 4R1</p>
+                    <p className="text-luxury-gray">7A Musgrave St, Toronto</p>
+                    <p className="text-luxury-gray">ON, M4E 2H3</p>
                   </div>
                 </div>
 
@@ -228,15 +228,14 @@ const Contact = () => {
             {/* Map */}
             <div className="rounded-lg overflow-hidden shadow-md h-[500px] bg-gray-200">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2883.086188017623!2d-79.28463995797225!3d43.72953637339704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4ce0a5fe8606f%3A0x72ca8577a1473cd6!2s1940%20Eglinton%20Ave%20E%2C%20Scarborough%2C%20ON%20M1L%204R1!5e0!3m2!1sen!2sca!4v1744432414477!5m2!1sen!2sca"
-                width="100%"
-                height="100%"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11540.444037968588!2d-79.2893341!3d43.6874555!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cea010ea11ad%3A0xd028c8b6a5b59cd0!2s7A%20Musgrave%20St%2C%20Toronto%2C%20ON%20M4E%202H3%2C%20Canada!5e0!3m2!1sen!2sin!4v1761943636189!5m2!1sen!2sin"
+                width="660"
+                height="500"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="AVNTS Location"
-              ></iframe>
+              />
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ const Company = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-              About <span className="text-luxury-gold">AVNTS</span> Autogroup
+              About <span className="text-luxury-silver">AVNTS</span> Autogroup
             </h1>
             <p className="text-xl text-white">
               Your premier destination for automotive excellence
@@ -38,7 +38,7 @@ const Company = () => {
             </p>
 
             <div className="text-center mb-12">
-              <h2 className="text-2xl font-serif font-bold text-luxury-gold italic">
+              <h2 className="text-2xl font-serif font-bold text-luxury-silver italic">
                 Luxury is the standard. Service is the signature.
               </h2>
             </div>
@@ -60,22 +60,22 @@ const Company = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-serif font-bold text-luxury-black mb-8">Our Services</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-              <Link to="/services/rentals" className="text-luxury-gold hover:underline font-medium">
+              <Link to="/services/rentals" className="text-luxury-silver hover:underline font-medium">
                 Car Rentals
               </Link>
-              <Link to="/services/management" className="text-luxury-gold hover:underline font-medium">
+              <Link to="/services/management" className="text-luxury-silver hover:underline font-medium">
                 Rental Management
               </Link>
-              <Link to="/services/sales" className="text-luxury-gold hover:underline font-medium">
+              <Link to="/services/sales" className="text-luxury-silver hover:underline font-medium">
                 Vehicle Sales
               </Link>
-              <Link to="/services/sourcing" className="text-luxury-gold hover:underline font-medium">
+              <Link to="/services/sourcing" className="text-luxury-silver hover:underline font-medium">
                 Vehicle Sourcing
               </Link>
-              <Link to="/services/insurance" className="text-luxury-gold hover:underline font-medium">
+              <Link to="/services/insurance" className="text-luxury-silver hover:underline font-medium">
                 Insurance Services
               </Link>
-              <Link to="/services/detailing" className="text-luxury-gold hover:underline font-medium">
+              <Link to="/services/detailing" className="text-luxury-silver hover:underline font-medium">
                 Detailing & Wrapping
               </Link>
             </div>

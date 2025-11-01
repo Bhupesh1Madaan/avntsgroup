@@ -19,7 +19,7 @@ const Layout: React.FC<{
           <div className="flex justify-between items-center">
             <Link to="/" className="flex items-center">
               <img alt="AVNTS Logo" className="h-16 mr-2"
-                src="/lovable-uploads/1ef1933c-1df2-4936-a4b4-1824478fc430.png" />
+                src="/lovable-uploads/AVNTS-Silver-08.png" />
             </Link>
 
             {/* Mobile menu button */}
@@ -29,16 +29,16 @@ const Layout: React.FC<{
 
             {/* Desktop navigation */}
             <nav className="hidden md:flex space-x-8">
-              <Link to="/" className={`font-medium transition-colors ${isActive('/') ? 'text-luxury-gold' : 'text-white hover:text-luxury-gold'}`}>
+              <Link to="/" className={`font-medium transition-colors ${isActive('/') ? 'text-luxury-silver' : 'text-white hover:text-luxury-silver'}`}>
                 Home
               </Link>
-              <Link to="/cars" className={`font-medium transition-colors ${isActive('/cars') ? 'text-luxury-gold' : 'text-white hover:text-luxury-gold'}`}>
+              <Link to="/cars" className={`font-medium transition-colors ${isActive('/cars') ? 'text-luxury-silver' : 'text-white hover:text-luxury-silver'}`}>
                 Inventory
               </Link>
 
               {/* Services dropdown */}
               <div className="relative group">
-                <Link to="/services" className={`font-medium transition-colors flex items-center ${isActive('/services') || isActive('/services/rentals') || isActive('/services/management') || isActive('/services/detailing') || isActive('/services/insurance') || isActive('/services/sales') || isActive('/services/sourcing') ? 'text-luxury-gold' : 'text-white hover:text-luxury-gold'}`}>
+                <Link to="/services" className={`font-medium transition-colors flex items-center ${isActive('/services') || isActive('/services/rentals') || isActive('/services/management') || isActive('/services/detailing') || isActive('/services/insurance') || isActive('/services/sales') || isActive('/services/sourcing') ? 'text-luxury-silver' : 'text-white hover:text-luxury-silver'}`}>
                   Services
                 </Link>
 
@@ -73,13 +73,13 @@ const Layout: React.FC<{
                 </div>
               </div>
 
-              <Link to="/credit" className={`font-medium transition-colors ${isActive('/credit') ? 'text-luxury-gold' : 'text-white hover:text-luxury-gold'}`}>
+              <Link to="/credit" className={`font-medium transition-colors ${isActive('/credit') ? 'text-luxury-silver' : 'text-white hover:text-luxury-silver'}`}>
                 Financing
               </Link>
 
               {/* Support dropdown */}
               <div className="relative group">
-                <span className="font-medium text-white hover:text-luxury-gold cursor-pointer">
+                <span className="font-medium text-white hover:text-luxury-silver cursor-pointer">
                   Support
                 </span>
 
@@ -98,7 +98,7 @@ const Layout: React.FC<{
 
               {/* About Us dropdown */}
               <div className="relative group">
-                <Link to="/company" className={`font-medium transition-colors flex items-center ${isActive('/company') || isActive('/careers') || isActive('/news') ? 'text-luxury-gold' : 'text-white hover:text-luxury-gold'}`}>
+                <Link to="/company" className={`font-medium transition-colors flex items-center ${isActive('/company') || isActive('/careers') || isActive('/news') ? 'text-luxury-silver' : 'text-white hover:text-luxury-silver'}`}>
                   About Us
                 </Link>
 
@@ -125,47 +125,47 @@ const Layout: React.FC<{
 
           {/* Mobile navigation */}
           {mobileMenuOpen && <nav className="md:hidden pt-4 pb-4 space-y-3">
-            <Link to="/" className={`block font-medium transition-colors ${isActive('/') ? 'text-luxury-gold' : 'text-white hover:text-luxury-gold'}`} onClick={() => setMobileMenuOpen(false)}>
+            <Link to="/" className={`block font-medium transition-colors ${isActive('/') ? 'text-luxury-silver' : 'text-white hover:text-luxury-silver'}`} onClick={() => setMobileMenuOpen(false)}>
               Home
             </Link>
-            <Link to="/cars" className={`block font-medium transition-colors ${isActive('/cars') ? 'text-luxury-gold' : 'text-white hover:text-luxury-gold'}`} onClick={() => setMobileMenuOpen(false)}>
+            <Link to="/cars" className={`block font-medium transition-colors ${isActive('/cars') ? 'text-luxury-silver' : 'text-white hover:text-luxury-silver'}`} onClick={() => setMobileMenuOpen(false)}>
               Inventory
             </Link>
 
             {/* Mobile services with sub-links */}
             <div>
-              <Link to="/services" className={`block font-medium transition-colors ${isActive('/services') ? 'text-luxury-gold' : 'text-white hover:text-luxury-gold'}`} onClick={() => setMobileMenuOpen(false)}>
+              <Link to="/services" className={`block font-medium transition-colors ${isActive('/services') ? 'text-luxury-silver' : 'text-white hover:text-luxury-silver'}`} onClick={() => setMobileMenuOpen(false)}>
                 Services
               </Link>
               <div className="pl-4 mt-2 space-y-2">
-                <Link to="/services/rentals" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/services/rentals" className="flex items-center text-sm text-gray-300 hover:text-luxury-silver" onClick={() => setMobileMenuOpen(false)}>
                   <Car size={14} className="mr-2" />
                   <span>Car Rentals</span>
                 </Link>
-                <Link to="/services/management" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/services/management" className="flex items-center text-sm text-gray-300 hover:text-luxury-silver" onClick={() => setMobileMenuOpen(false)}>
                   <Settings size={14} className="mr-2" />
                   <span>Car Rental Management</span>
                 </Link>
-                <Link to="/services/sales" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/services/sales" className="flex items-center text-sm text-gray-300 hover:text-luxury-silver" onClick={() => setMobileMenuOpen(false)}>
                   <DollarSign size={14} className="mr-2" />
                   <span>Vehicle Sales</span>
                 </Link>
-                <Link to="/services/sourcing" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/services/sourcing" className="flex items-center text-sm text-gray-300 hover:text-luxury-silver" onClick={() => setMobileMenuOpen(false)}>
                   <Search size={14} className="mr-2" />
                   <span>Vehicle Sourcing</span>
                 </Link>
-                <Link to="/services/insurance" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/services/insurance" className="flex items-center text-sm text-gray-300 hover:text-luxury-silver" onClick={() => setMobileMenuOpen(false)}>
                   <Shield size={14} className="mr-2" />
                   <span>Insurance Services</span>
                 </Link>
-                <Link to="/services/detailing" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/services/detailing" className="flex items-center text-sm text-gray-300 hover:text-luxury-silver" onClick={() => setMobileMenuOpen(false)}>
                   <Wrench size={14} className="mr-2" />
                   <span>Detailing, Wrapping & Tinting</span>
                 </Link>
               </div>
             </div>
 
-            <Link to="/credit" className={`block font-medium transition-colors ${isActive('/credit') ? 'text-luxury-gold' : 'text-white hover:text-luxury-gold'}`} onClick={() => setMobileMenuOpen(false)}>
+            <Link to="/credit" className={`block font-medium transition-colors ${isActive('/credit') ? 'text-luxury-silver' : 'text-white hover:text-luxury-silver'}`} onClick={() => setMobileMenuOpen(false)}>
               Financing
             </Link>
 
@@ -175,10 +175,10 @@ const Layout: React.FC<{
                 Support
               </span>
               <div className="pl-4 mt-2 space-y-2">
-                <Link to="/contact" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/contact" className="flex items-center text-sm text-gray-300 hover:text-luxury-silver" onClick={() => setMobileMenuOpen(false)}>
                   <span>Contact</span>
                 </Link>
-                <Link to="/faq" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/faq" className="flex items-center text-sm text-gray-300 hover:text-luxury-silver" onClick={() => setMobileMenuOpen(false)}>
                   <span>FAQ</span>
                 </Link>
               </div>
@@ -186,19 +186,19 @@ const Layout: React.FC<{
 
             {/* Mobile About Us with sub-links */}
             <div>
-              <Link to="/company" className={`block font-medium transition-colors ${isActive('/company') ? 'text-luxury-gold' : 'text-white hover:text-luxury-gold'}`} onClick={() => setMobileMenuOpen(false)}>
+              <Link to="/company" className={`block font-medium transition-colors ${isActive('/company') ? 'text-luxury-silver' : 'text-white hover:text-luxury-silver'}`} onClick={() => setMobileMenuOpen(false)}>
                 About Us
               </Link>
               <div className="pl-4 mt-2 space-y-2">
-                <Link to="/company" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/company" className="flex items-center text-sm text-gray-300 hover:text-luxury-silver" onClick={() => setMobileMenuOpen(false)}>
                   <Users size={14} className="mr-2" />
                   <span>Company</span>
                 </Link>
-                <Link to="/careers" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/careers" className="flex items-center text-sm text-gray-300 hover:text-luxury-silver" onClick={() => setMobileMenuOpen(false)}>
                   <Briefcase size={14} className="mr-2" />
                   <span>Careers</span>
                 </Link>
-                <Link to="/news" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/news" className="flex items-center text-sm text-gray-300 hover:text-luxury-silver" onClick={() => setMobileMenuOpen(false)}>
                   <HelpCircle size={14} className="mr-2" />
                   <span>News & Stories</span>
                 </Link>
@@ -217,33 +217,42 @@ const Layout: React.FC<{
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <div className="flex items-center mb-4">
-                <img src="/lovable-uploads/0b6b2fce-729b-418f-b3f6-9d7298d0a1aa.png" alt="AVNTS Logo" className="h-96 mr-2"
+                <img src="/lovable-uploads/AVNTS-Silver-08.png" alt="AVNTS Logo" className="h-96 mr-2"
                 />
               </div>
             </div>
             <div>
               <h4 className="text-lg font-bold mb-4 text-white">Quick Links</h4>
               <ul className="space-y-2">
-                <li><Link to="/" className="text-gray-300 hover:text-luxury-gold transition-colors">Home</Link></li>
-                <li><Link to="/cars" className="text-gray-300 hover:text-luxury-gold transition-colors">Inventory</Link></li>
-                <li><Link to="/services" className="text-gray-300 hover:text-luxury-gold transition-colors">Services</Link></li>
-                <li><Link to="/credit" className="text-gray-300 hover:text-luxury-gold transition-colors">Financing</Link></li>
-                <li><Link to="/company" className="text-gray-300 hover:text-luxury-gold transition-colors">Company</Link></li>
-                <li><Link to="/careers" className="text-gray-300 hover:text-luxury-gold transition-colors">Careers</Link></li>
-                <li><Link to="/news" className="text-gray-300 hover:text-luxury-gold transition-colors">News & Stories</Link></li>
-                <li><Link to="/contact" className="text-gray-300 hover:text-luxury-gold transition-colors">Contact</Link></li>
-                <li><Link to="/faq" className="text-gray-300 hover:text-luxury-gold transition-colors">FAQ</Link></li>
+                <li><Link to="/" className="text-gray-300 hover:text-luxury-silver transition-colors">Home</Link></li>
+                <li><Link to="/cars" className="text-gray-300 hover:text-luxury-silver transition-colors">Inventory</Link></li>
+                <li><Link to="/services" className="text-gray-300 hover:text-luxury-silver transition-colors">Services</Link></li>
+                <li><Link to="/credit" className="text-gray-300 hover:text-luxury-silver transition-colors">Financing</Link></li>
+                <li><Link to="/company" className="text-gray-300 hover:text-luxury-silver transition-colors">Company</Link></li>
+                <li><Link to="/careers" className="text-gray-300 hover:text-luxury-silver transition-colors">Careers</Link></li>
+                <li><Link to="/news" className="text-gray-300 hover:text-luxury-silver transition-colors">News & Stories</Link></li>
+                <li><Link to="/contact" className="text-gray-300 hover:text-luxury-silver transition-colors">Contact</Link></li>
+                <li><Link to="/faq" className="text-gray-300 hover:text-luxury-silver transition-colors">FAQ</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="text-lg font-bold mb-4 text-white">Contact Information</h4>
               <div className="text-gray-300 mb-2">
-                <div>1940 Eglinton Ave East,</div>
-                <div>Scarborough, Ontario,</div>
-                <div>M1L 4R1</div>
+                <div>7A Musgrave St,</div>
+                <div>Toronto, ON</div>
+                <div>M4E 2H3</div>
+                <p className="text-gray-300 mb-2">Phone: (437) 553-9211</p>
+                <p className="text-gray-300 mb-2">Email: contact@avntsautogroup.com</p>
+                <br />
+                <Link
+                  to="https://maps.app.goo.gl/3AaWLz8EKUpmXoje9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="gold-button inline-block"
+                >
+                  Get Directions
+                </Link>
               </div>
-              <p className="text-gray-300 mb-2">Phone: (437) 553-9211</p>
-              <p className="text-gray-300 mb-2">Email: contact@avntsautogroup.com</p>
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">

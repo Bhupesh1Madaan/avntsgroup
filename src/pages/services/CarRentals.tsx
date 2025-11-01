@@ -15,7 +15,7 @@ const CarRentals = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-                Luxury Car <span className="text-luxury-gold">Rentals</span>
+                Luxury Car <span className="text-luxury-silver">Rentals</span>
               </h1>
               <p className="text-xl text-gray-700 mb-8">
                 Experience the finest vehicles with unmatched service
@@ -61,15 +61,15 @@ const CarRentals = () => {
                 <div className="p-6">
                   <div className="space-y-3">
                     <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle size={16} className="text-luxury-gold mr-2" />
+                      <CheckCircle size={16} className="text-luxury-silver mr-2" />
                       <span>Mercedes S-Class, BMW 7 Series</span>
                     </div>
                     <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle size={16} className="text-luxury-gold mr-2" />
+                      <CheckCircle size={16} className="text-luxury-silver mr-2" />
                       <span>Perfect for business travel</span>
                     </div>
                     <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle size={16} className="text-luxury-gold mr-2" />
+                      <CheckCircle size={16} className="text-luxury-silver mr-2" />
                       <span>Chauffeur service available</span>
                     </div>
                   </div>
@@ -96,15 +96,15 @@ const CarRentals = () => {
                 <div className="p-6">
                   <div className="space-y-3">
                     <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle size={16} className="text-luxury-gold mr-2" />
+                      <CheckCircle size={16} className="text-luxury-silver mr-2" />
                       <span>Ferrari, Lamborghini, McLaren</span>
                     </div>
                     <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle size={16} className="text-luxury-gold mr-2" />
+                      <CheckCircle size={16} className="text-luxury-silver mr-2" />
                       <span>Track day packages available</span>
                     </div>
                     <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle size={16} className="text-luxury-gold mr-2" />
+                      <CheckCircle size={16} className="text-luxury-silver mr-2" />
                       <span>Professional instruction</span>
                     </div>
                   </div>
@@ -131,15 +131,15 @@ const CarRentals = () => {
                 <div className="p-6">
                   <div className="space-y-3">
                     <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle size={16} className="text-luxury-gold mr-2" />
+                      <CheckCircle size={16} className="text-luxury-silver mr-2" />
                       <span>Range Rover, BMW X7, Audi Q8</span>
                     </div>
                     <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle size={16} className="text-luxury-gold mr-2" />
+                      <CheckCircle size={16} className="text-luxury-silver mr-2" />
                       <span>Perfect for families</span>
                     </div>
                     <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle size={16} className="text-luxury-gold mr-2" />
+                      <CheckCircle size={16} className="text-luxury-silver mr-2" />
                       <span>All-weather capability</span>
                     </div>
                   </div>

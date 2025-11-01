@@ -304,7 +304,7 @@ const Cars = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl animate-fade-in">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-            Our <span className="text-luxury-gold">Exclusive</span> Fleet
+            Our <span className="text-luxury-silver">Exclusive</span> Fleet
           </h1>
           <p className="text-xl text-white">Choose from our selection of the top-quality vehicles</p>
         </div>
@@ -423,7 +423,7 @@ const Cars = () => {
               <h3 className="text-xl font-serif font-bold mb-2">{car.name}</h3>
               <p className="text-luxury-gray mb-4">{car.description}</p>
               <div className="flex justify-between items-center">
-                <span className="text-lg font-bold text-luxury-gold">${car.daily}/day</span>
+                <span className="text-lg font-bold text-luxury-silver">${car.daily}/day</span>
                 <Link to="/contact" className="gold-button" onClick={e => {
                   e.stopPropagation(); // Prevent opening the dialog when clicking the button
                 }}>

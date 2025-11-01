@@ -13,7 +13,7 @@ const VehicleSourcing = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-5xl mx-auto text-center">
               <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">
-                Vehicle <span className="text-luxury-gold">Sourcing</span>
+                Vehicle <span className="text-luxury-silver">Sourcing</span>
               </h1>
               <p className="text-2xl text-gray-300 mb-8">
                 We find the impossible. We source the extraordinary.
@@ -199,28 +199,28 @@ const VehicleSourcing = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div className="text-center group">
                   <div className="w-20 h-20 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-luxury-gold/20 transition-colors">
-                    <Globe size={32} className="text-luxury-gold" />
+                    <Globe size={32} className="text-luxury-silver" />
                   </div>
                   <h3 className="text-lg font-semibold mb-2">50+ Countries</h3>
                   <p className="text-gray-600 text-sm">Worldwide dealer network</p>
                 </div>
                 <div className="text-center group">
                   <div className="w-20 h-20 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-luxury-gold/20 transition-colors">
-                    <Clock size={32} className="text-luxury-gold" />
+                    <Clock size={32} className="text-luxury-silver" />
                   </div>
                   <h3 className="text-lg font-semibold mb-2">24/7 Search</h3>
                   <p className="text-gray-600 text-sm">Continuous monitoring</p>
                 </div>
                 <div className="text-center group">
                   <div className="w-20 h-20 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-luxury-gold/20 transition-colors">
-                    <Shield size={32} className="text-luxury-gold" />
+                    <Shield size={32} className="text-luxury-silver" />
                   </div>
                   <h3 className="text-lg font-semibold mb-2">Verified Quality</h3>
                   <p className="text-gray-600 text-sm">Thorough inspection process</p>
                 </div>
                 <div className="text-center group">
                   <div className="w-20 h-20 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-luxury-gold/20 transition-colors">
-                    <CheckCircle size={32} className="text-luxury-gold" />
+                    <CheckCircle size={32} className="text-luxury-silver" />
                   </div>
                   <h3 className="text-lg font-semibold mb-2">100% Success</h3>
                   <p className="text-gray-600 text-sm">We find what you want</p>
