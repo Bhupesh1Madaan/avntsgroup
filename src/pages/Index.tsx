@@ -24,7 +24,7 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl animate-fade-in">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 leading-tight">
-              Quality Vehicles at <span className="text-luxury-silver">Fair Prices</span>
+              Quality Vehicles at <span className="text-luxury-gold">Fair Prices</span>
             </h1>
             <div className="flex flex-wrap gap-4 mt-8">
               <Link to="/cars" className="gold-button">
@@ -45,7 +45,7 @@ const Index = () => {
             <div className="h-24 md:h-28 lg:h-32 flex items-center justify-center mb-6">
               <p
                 key={currentPhrase}
-                className="text-4xl md:text-5xl lg:text-6xl text-luxury-silver italic font-serif font-bold transform transition-all duration-1000 ease-out"
+                className="text-4xl md:text-5xl lg:text-6xl text-luxury-gold italic font-serif font-bold transform transition-all duration-1000 ease-out"
                 style={{
                   animation: 'popUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
                 }}
@@ -93,7 +93,7 @@ const Index = () => {
               <img src="/lovable-uploads/conveyor/ferrari.png" alt="Ferrari" className="w-24 h-20 object-contain flex-shrink-0" />
               <img src="/lovable-uploads/conveyor/Porsche-Logo.png" alt="Porsche" className="w-24 h-20 object-contain flex-shrink-0" />
               <img src="/lovable-uploads/conveyor/toyota.png" alt="Toyota" className="w-24 h-20 object-contain flex-shrink-0" />
-              <img src="/lovable-uploads/conveyor/hyundai.jpg" alt="Hyundai" className="w-24 h-20 object-contain flex-shrink-0" />
+              <img src="/lovable-uploads/conveyor/hyundai.png" alt="Hyundai" className="w-24 h-20 object-contain flex-shrink-0" />
               <img src="/lovable-uploads/conveyor/kia-logo-png-transparent.png" alt="Kia" className="w-24 h-20 object-contain flex-shrink-0" />
 
               {/* Duplicate set for seamless loop */}
@@ -102,7 +102,7 @@ const Index = () => {
               <img src="/lovable-uploads/conveyor/ferrari.png" alt="Ferrari" className="w-24 h-20 object-contain flex-shrink-0" />
               <img src="/lovable-uploads/conveyor/Porsche-Logo.png" alt="Porsche" className="w-24 h-20 object-contain flex-shrink-0" />
               <img src="/lovable-uploads/conveyor/toyota.png" alt="Toyota" className="w-24 h-20 object-contain flex-shrink-0" />
-              <img src="/lovable-uploads/conveyor/hyundai.jpg" alt="Hyundai" className="w-24 h-20 object-contain flex-shrink-0" />
+              <img src="/lovable-uploads/conveyor/hyundai.png" alt="Hyundai" className="w-24 h-20 object-contain flex-shrink-0" />
               <img src="/lovable-uploads/conveyor/kia-logo-png-transparent.png" alt="Kia" className="w-24 h-20 object-contain flex-shrink-0" />
             </div>
           </div>
@@ -131,8 +131,8 @@ const Index = () => {
                 <h3 className="text-xl font-serif font-bold mb-2">Mercedes Benz CLA45 AMG</h3>
                 <p className="text-luxury-gray mb-4">High-performance compact coupe that blends aggressive styling with exhilarating power and precision handling.</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-lg font-bold text-luxury-silver">$65/day</span>
-                  <Link to="/cars" className="text-luxury-black font-medium flex items-center hover:text-luxury-silver transition-colors">
+                  <span className="text-lg font-bold text-luxury-gold">$65/day</span>
+                  <Link to="/cars" className="text-luxury-black font-medium flex items-center hover:text-luxury-gold transition-colors">
                     Details <ChevronRight size={16} className="ml-1" />
                   </Link>
                 </div>
@@ -152,8 +152,8 @@ const Index = () => {
                 <h3 className="text-xl font-serif font-bold mb-2">Toyota Rav4</h3>
                 <p className="text-luxury-gray mb-4">Versatile, fuel-efficient compact SUV known for its reliability, comfort, and advanced safety features.</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-lg font-bold text-luxury-silver">$79/day</span>
-                  <Link to="/cars" className="text-luxury-black font-medium flex items-center hover:text-luxury-silver transition-colors">
+                  <span className="text-lg font-bold text-luxury-gold">$79/day</span>
+                  <Link to="/cars" className="text-luxury-black font-medium flex items-center hover:text-luxury-gold transition-colors">
                     Details <ChevronRight size={16} className="ml-1" />
                   </Link>
                 </div>
@@ -173,8 +173,8 @@ const Index = () => {
                 <h3 className="text-xl font-serif font-bold mb-2">Mercedes Benz E43 AMG</h3>
                 <p className="text-luxury-gray mb-4">Sleek, high-performance compact sedan boasting turbocharged power, sharp handling, and AMG-tuned luxury.</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-lg font-bold text-luxury-silver">$89/day</span>
-                  <Link to="/cars" className="text-luxury-black font-medium flex items-center hover:text-luxury-silver transition-colors">
+                  <span className="text-lg font-bold text-luxury-gold">$89/day</span>
+                  <Link to="/cars" className="text-luxury-black font-medium flex items-center hover:text-luxury-gold transition-colors">
                     Details <ChevronRight size={16} className="ml-1" />
                   </Link>
                 </div>
@@ -234,7 +234,7 @@ const Index = () => {
             <div className="bg-gray-50 p-6 rounded-lg shadow-md">
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-luxury-gold text-xl">★</span>
+                  <span key={i} className="text-luxury-silver text-xl">★</span>
                 ))}
               </div>
               <p className="text-luxury-gray mb-4">
@@ -246,7 +246,7 @@ const Index = () => {
             <div className="bg-gray-50 p-6 rounded-lg shadow-md">
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-luxury-gold text-xl">★</span>
+                  <span key={i} className="text-luxury-silver text-xl">★</span>
                 ))}
               </div>
               <p className="text-luxury-gray mb-4">
@@ -258,7 +258,7 @@ const Index = () => {
             <div className="bg-gray-50 p-6 rounded-lg shadow-md">
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-luxury-gold text-xl">★</span>
+                  <span key={i} className="text-luxury-silver text-xl">★</span>
                 ))}
               </div>
               <p className="text-luxury-gray mb-4">

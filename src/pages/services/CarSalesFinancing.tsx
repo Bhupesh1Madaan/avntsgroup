@@ -77,7 +77,7 @@ const CarSalesFinancing = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">
-                Vehicle Sales & <span className="text-luxury-silver">Financing</span>
+                Vehicle Sales & <span className="text-luxury-gold">Financing</span>
               </h1>
               <p className="text-2xl text-gray-300 mb-8">
                 Own your dream car with flexible financing options
@@ -128,7 +128,7 @@ const CarSalesFinancing = () => {
                 <div className="p-8">
                   <div className="flex justify-between items-start mb-6">
                     <div>
-                      <div className="text-3xl font-bold text-luxury-silver mb-2">$125,000</div>
+                      <div className="text-3xl font-bold text-luxury-gold mb-2">$125,000</div>
                       <div className="text-gray-600">Starting at $150/day</div>
                     </div>
                     <div className="text-right">
@@ -184,7 +184,7 @@ const CarSalesFinancing = () => {
                 <div className="p-8">
                   <div className="flex justify-between items-start mb-6">
                     <div>
-                      <div className="text-3xl font-bold text-luxury-silver mb-2">$65,000</div>
+                      <div className="text-3xl font-bold text-luxury-gold mb-2">$65,000</div>
                       <div className="text-gray-600">Starting at $140/day</div>
                     </div>
                     <div className="text-right">
@@ -237,19 +237,19 @@ const CarSalesFinancing = () => {
                     <DollarSign size={24} className="text-black" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4">Standard Financing</h3>
-                  <div className="text-4xl font-bold text-luxury-silver mb-2">3.9%</div>
+                  <div className="text-4xl font-bold text-luxury-gold mb-2">3.9%</div>
                   <div className="text-gray-600 mb-6">APR starting from</div>
                   <ul className="text-left space-y-3 mb-8">
                     <li className="flex items-center">
-                      <CheckCircle size={16} className="text-luxury-silver mr-3" />
+                      <CheckCircle size={16} className="text-luxury-gold mr-3" />
                       <span>Terms up to 72 months</span>
                     </li>
                     <li className="flex items-center">
-                      <CheckCircle size={16} className="text-luxury-silver mr-3" />
+                      <CheckCircle size={16} className="text-luxury-gold mr-3" />
                       <span>No prepayment penalty</span>
                     </li>
                     <li className="flex items-center">
-                      <CheckCircle size={16} className="text-luxury-silver mr-3" />
+                      <CheckCircle size={16} className="text-luxury-gold mr-3" />
                       <span>Quick approval process</span>
                     </li>
                   </ul>
@@ -266,7 +266,7 @@ const CarSalesFinancing = () => {
                     </span>
                   </div>
                   <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Shield size={24} className="text-luxury-silver" />
+                    <Shield size={24} className="text-luxury-gold" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4 text-black">Premium Financing</h3>
                   <div className="text-4xl font-bold text-black mb-2">2.9%</div>
@@ -285,7 +285,7 @@ const CarSalesFinancing = () => {
                       <span>Concierge service</span>
                     </li>
                   </ul>
-                  <button className="w-full bg-black text-luxury-silver py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                  <button className="w-full bg-black text-luxury-gold py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
                     Get Started
                   </button>
                 </div>
@@ -296,19 +296,19 @@ const CarSalesFinancing = () => {
                     <DollarSign size={24} className="text-black" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4">Lease Options</h3>
-                  <div className="text-4xl font-bold text-luxury-silver mb-2">$899</div>
+                  <div className="text-4xl font-bold text-luxury-gold mb-2">$899</div>
                   <div className="text-gray-600 mb-6">per month starting</div>
                   <ul className="text-left space-y-3 mb-8">
                     <li className="flex items-center">
-                      <CheckCircle size={16} className="text-luxury-silver mr-3" />
+                      <CheckCircle size={16} className="text-luxury-gold mr-3" />
                       <span>24-48 month terms</span>
                     </li>
                     <li className="flex items-center">
-                      <CheckCircle size={16} className="text-luxury-silver mr-3" />
+                      <CheckCircle size={16} className="text-luxury-gold mr-3" />
                       <span>Low monthly payments</span>
                     </li>
                     <li className="flex items-center">
-                      <CheckCircle size={16} className="text-luxury-silver mr-3" />
+                      <CheckCircle size={16} className="text-luxury-gold mr-3" />
                       <span>Upgrade options</span>
                     </li>
                   </ul>
@@ -470,10 +470,10 @@ const CarSalesFinancing = () => {
                     <div className="bg-gradient-to-r from-luxury-gold/10 to-luxury-gold/20 p-4 rounded-lg border border-luxury-gold/30">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-2">
-                          <DollarSign className="w-5 h-5 text-luxury-silver" />
+                          <DollarSign className="w-5 h-5 text-luxury-gold" />
                           <span className="font-medium">Purchase Price</span>
                         </div>
-                        <span className="text-2xl font-bold text-luxury-silver">${selectedVehicle.price.toLocaleString()}</span>
+                        <span className="text-2xl font-bold text-luxury-gold">${selectedVehicle.price.toLocaleString()}</span>
                       </div>
                     </div>
 
@@ -500,7 +500,7 @@ const CarSalesFinancing = () => {
                     Schedule Test Drive
                   </button>
                   <button
-                    className="w-full border-2 border-luxury-gold text-luxury-silver font-semibold py-3 px-6 rounded-lg hover:bg-luxury-gold hover:text-black transition-all duration-200"
+                    className="w-full border-2 border-luxury-gold text-luxury-gold font-semibold py-3 px-6 rounded-lg hover:bg-luxury-gold hover:text-black transition-all duration-200"
                     onClick={() => {
                       window.location.href = '/credit';
                     }}

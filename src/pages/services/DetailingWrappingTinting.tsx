@@ -11,7 +11,7 @@ const DetailingWrappingTinting = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-              Detailing, Wrapping & <span className="text-luxury-silver">Tinting</span>
+              Detailing, Wrapping & <span className="text-luxury-gold">Tinting</span>
             </h1>
             <p className="text-xl text-white">
               Premium care for luxury vehicles
@@ -25,7 +25,7 @@ const DetailingWrappingTinting = () => {
           <div className="bg-white shadow-lg rounded-lg overflow-hidden mt-12">
             <div className="p-8">
               <div className="flex items-center mb-6">
-                <Wrench size={32} className="text-luxury-silver mr-4" />
+                <Wrench size={32} className="text-luxury-gold mr-4" />
                 <h2 className="text-2xl font-serif font-bold">Perfection in Every Detail</h2>
               </div>
 
@@ -39,19 +39,19 @@ const DetailingWrappingTinting = () => {
                 <h3 className="font-bold text-xl mb-4">Our Services:</h3>
                 <ul className="space-y-3">
                   <li className="flex items-center">
-                    <CheckCircle size={18} className="text-luxury-silver mr-2" />
+                    <CheckCircle size={18} className="text-luxury-gold mr-2" />
                     <span>Ceramic Coating & Paint Protection</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle size={18} className="text-luxury-silver mr-2" />
+                    <CheckCircle size={18} className="text-luxury-gold mr-2" />
                     <span>Full & Partial Vinyl Wraps</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle size={18} className="text-luxury-silver mr-2" />
+                    <CheckCircle size={18} className="text-luxury-gold mr-2" />
                     <span>High-Performance Window Tints</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle size={18} className="text-luxury-silver mr-2" />
+                    <CheckCircle size={18} className="text-luxury-gold mr-2" />
                     <span>Interior & Exterior Detailing Packages</span>
                   </li>
                 </ul>

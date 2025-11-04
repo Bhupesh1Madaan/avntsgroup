@@ -149,7 +149,7 @@ const Credit = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-              Credit <span className="text-luxury-silver">Application</span>
+              Credit <span className="text-luxury-gold">Application</span>
             </h1>
             <p className="text-xl text-white">
               Apply for financing to experience our premium luxury vehicles.
@@ -537,7 +537,7 @@ const Credit = () => {
                       required
                     />
                     <label htmlFor="terms" className="text-sm text-luxury-gray">
-                      I agree to the <a href="#" className="text-luxury-silver hover:underline">Terms and Conditions</a> and consent to the collection and use of my information as described in the <a href="#" className="text-luxury-silver hover:underline">Privacy Policy</a>.
+                      I agree to the <a href="#" className="text-luxury-gold hover:underline">Terms and Conditions</a> and consent to the collection and use of my information as described in the <a href="#" className="text-luxury-gold hover:underline">Privacy Policy</a>.
                     </label>
                   </div>
                 </div>

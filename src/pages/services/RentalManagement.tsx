@@ -12,22 +12,22 @@ const RentalManagement = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                Fleet <span className="text-luxury-silver">Management</span>
+                Fleet <span className="text-luxury-gold">Management</span>
               </h1>
               <p className="text-xl text-gray-300 mb-8">
                 Turn your luxury vehicles into profitable assets
               </p>
               <div className="flex flex-wrap justify-center gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-luxury-silver">95%</div>
+                  <div className="text-3xl font-bold text-luxury-gold">95%</div>
                   <div className="text-sm text-gray-300">Utilization Rate</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-luxury-silver">$4K</div>
+                  <div className="text-3xl font-bold text-luxury-gold">$4K</div>
                   <div className="text-sm text-gray-300">Avg Monthly Revenue</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-luxury-silver">4.9★</div>
+                  <div className="text-3xl font-bold text-luxury-gold">4.9★</div>
                   <div className="text-sm text-gray-300">Client Rating</div>
                 </div>
               </div>
@@ -48,7 +48,7 @@ const RentalManagement = () => {
                 {/* Service 1 */}
                 <div className="text-center group">
                   <div className="w-20 h-20 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-luxury-gold/20 transition-colors">
-                    <Settings size={32} className="text-luxury-silver" />
+                    <Settings size={32} className="text-luxury-gold" />
                   </div>
                   <h3 className="text-xl font-semibold mb-4">Vehicle Maintenance</h3>
                   <p className="text-gray-600">Regular servicing, repairs, and inspections to keep your fleet in perfect condition.</p>
@@ -57,7 +57,7 @@ const RentalManagement = () => {
                 {/* Service 2 */}
                 <div className="text-center group">
                   <div className="w-20 h-20 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-luxury-gold/20 transition-colors">
-                    <CheckCircle size={32} className="text-luxury-silver" />
+                    <CheckCircle size={32} className="text-luxury-gold" />
                   </div>
                   <h3 className="text-xl font-semibold mb-4">Client Screening</h3>
                   <p className="text-gray-600">Thorough background checks and verification to ensure only qualified renters.</p>
@@ -66,7 +66,7 @@ const RentalManagement = () => {
                 {/* Service 3 */}
                 <div className="text-center group">
                   <div className="w-20 h-20 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-luxury-gold/20 transition-colors">
-                    <Settings size={32} className="text-luxury-silver" />
+                    <Settings size={32} className="text-luxury-gold" />
                   </div>
                   <h3 className="text-xl font-semibold mb-4">Marketing & Booking</h3>
                   <p className="text-gray-600">Professional marketing and booking management to maximize your rental income.</p>
@@ -75,7 +75,7 @@ const RentalManagement = () => {
                 {/* Service 4 */}
                 <div className="text-center group">
                   <div className="w-20 h-20 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-luxury-gold/20 transition-colors">
-                    <CheckCircle size={32} className="text-luxury-silver" />
+                    <CheckCircle size={32} className="text-luxury-gold" />
                   </div>
                   <h3 className="text-xl font-semibold mb-4">Insurance Management</h3>
                   <p className="text-gray-600">Comprehensive insurance coverage and claims handling for complete protection.</p>
@@ -84,7 +84,7 @@ const RentalManagement = () => {
                 {/* Service 5 */}
                 <div className="text-center group">
                   <div className="w-20 h-20 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-luxury-gold/20 transition-colors">
-                    <Settings size={32} className="text-luxury-silver" />
+                    <Settings size={32} className="text-luxury-gold" />
                   </div>
                   <h3 className="text-xl font-semibold mb-4">Financial Reporting</h3>
                   <p className="text-gray-600">Detailed monthly reports on revenue, expenses, and performance metrics.</p>
@@ -93,7 +93,7 @@ const RentalManagement = () => {
                 {/* Service 6 */}
                 <div className="text-center group">
                   <div className="w-20 h-20 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-luxury-gold/20 transition-colors">
-                    <CheckCircle size={32} className="text-luxury-silver" />
+                    <CheckCircle size={32} className="text-luxury-gold" />
                   </div>
                   <h3 className="text-xl font-semibold mb-4">24/7 Support</h3>
                   <p className="text-gray-600">Round-the-clock support for both you and your renters.</p>

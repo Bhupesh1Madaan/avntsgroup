@@ -128,7 +128,7 @@ const FAQ = () => {
            <div className="container mx-auto px-4 relative z-10">
              <div className="max-w-2xl animate-fade-in">
                <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-                 Frequently Asked <span className="text-luxury-silver">Questions</span>
+                 Frequently Asked <span className="text-luxury-gold">Questions</span>
                </h1>
                <p className="text-xl text-white">
                  Find answers to common questions about our services

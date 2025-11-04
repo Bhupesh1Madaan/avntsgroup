@@ -62,7 +62,7 @@ const NewsStories = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-              News & <span className="text-luxury-silver">Stories</span>
+              News & <span className="text-luxury-gold">Stories</span>
             </h1>
             <p className="text-xl text-white">
               Stay updated with the latest from AVNTS Autogroup

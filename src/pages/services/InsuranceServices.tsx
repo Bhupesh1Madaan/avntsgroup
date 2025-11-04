@@ -13,7 +13,7 @@ const InsuranceServices = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-              Insurance <span className="text-luxury-silver">Services</span>
+              Insurance <span className="text-luxury-gold">Services</span>
             </h1>
             <p className="text-xl text-white">
               Comprehensive coverage for your peace of mind
@@ -27,7 +27,7 @@ const InsuranceServices = () => {
           <div className="bg-white shadow-lg rounded-lg overflow-hidden mt-12">
             <div className="p-8">
               <div className="flex items-center mb-6">
-                <Shield size={32} className="text-luxury-silver mr-4" />
+                <Shield size={32} className="text-luxury-gold mr-4" />
                 <h2 className="text-2xl font-serif font-bold">Protection Meets Prestige</h2>
               </div>
 
@@ -39,15 +39,15 @@ const InsuranceServices = () => {
               <div className="bg-gray-50 p-6 rounded-lg mb-8">
                 <ul className="space-y-3">
                   <li className="flex items-center">
-                    <CheckCircle size={18} className="text-luxury-silver mr-2" />
+                    <CheckCircle size={18} className="text-luxury-gold mr-2" />
                     <span>Flexible Plans for Rentals & Ownership</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle size={18} className="text-luxury-silver mr-2" />
+                    <CheckCircle size={18} className="text-luxury-gold mr-2" />
                     <span>Comprehensive Coverage Options</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle size={18} className="text-luxury-silver mr-2" />
+                    <CheckCircle size={18} className="text-luxury-gold mr-2" />
                     <span>Expert Policy Guidance</span>
                   </li>
                 </ul>

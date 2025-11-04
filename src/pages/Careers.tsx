@@ -182,17 +182,17 @@ const Careers = () => {
 
   const benefits = [
     {
-      icon: <Star className="h-8 w-8 text-luxury-silver" />,
+      icon: <Star className="h-8 w-8 text-luxury-gold" />,
       title: "Competitive Salary",
       description: "We offer competitive compensation packages with performance-based bonuses."
     },
     {
-      icon: <Users className="h-8 w-8 text-luxury-silver" />,
+      icon: <Users className="h-8 w-8 text-luxury-gold" />,
       title: "Team Environment",
       description: "Work with a supportive team that values collaboration and professional growth."
     },
     {
-      icon: <Briefcase className="h-8 w-8 text-luxury-silver" />,
+      icon: <Briefcase className="h-8 w-8 text-luxury-gold" />,
       title: "Career Growth",
       description: "Opportunities for advancement and professional development within our organization."
     }
@@ -217,7 +217,7 @@ const Careers = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-2xl animate-fade-in">
               <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-                Join Our <span className="text-luxury-silver">Team</span>
+                Join Our <span className="text-luxury-gold">Team</span>
               </h1>
               <p className="text-xl text-white">
                 Build your career with AVNTS Auto Group
@@ -288,7 +288,7 @@ const Careers = () => {
                         <MapPin className="h-4 w-4" />
                         <span>{job.location}</span>
                       </div>
-                      <span className="bg-luxury-gold/10 text-luxury-silver px-2 py-1 rounded-full text-xs font-medium">
+                      <span className="bg-luxury-gold/10 text-luxury-gold px-2 py-1 rounded-full text-xs font-medium">
                         {job.type}
                       </span>
                     </div>
@@ -358,7 +358,7 @@ const Careers = () => {
                   <MapPin className="h-4 w-4" />
                   <span>{selectedJob?.location}</span>
                 </div>
-                <span className="bg-luxury-gold/10 text-luxury-silver px-2 py-1 rounded-full text-xs font-medium">
+                <span className="bg-luxury-gold/10 text-luxury-gold px-2 py-1 rounded-full text-xs font-medium">
                   {selectedJob?.type}
                 </span>
               </div>

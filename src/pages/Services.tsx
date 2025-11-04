@@ -13,7 +13,7 @@ const Services = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-              Our <span className="text-luxury-silver">Premium</span> Services
+              Our <span className="text-luxury-gold">Premium</span> Services
             </h1>
             <p className="text-xl text-white">
               Comprehensive automotive solutions tailored to your needs.
@@ -43,7 +43,7 @@ const Services = () => {
                 <p className="text-luxury-gray mb-6">
                  Reliable vehicles for every lifestyle, from fuel-efficient sedans to versatile SUVs and sporty compacts.
                 </p>
-                <Link to="/services/rentals" className="text-luxury-silver hover:underline font-medium flex items-center">
+                <Link to="/services/rentals" className="text-luxury-gold hover:underline font-medium flex items-center">
                   Learn more 
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
@@ -65,7 +65,7 @@ const Services = () => {
                 <p className="text-luxury-gray mb-6">
                   Turn your vehicle into an income-generating asset with our full-service rental management program.
                 </p>
-                <Link to="/services/management" className="text-luxury-silver hover:underline font-medium flex items-center">
+                <Link to="/services/management" className="text-luxury-gold hover:underline font-medium flex items-center">
                   Learn more 
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
@@ -88,7 +88,7 @@ const Services = () => {
                 <p className="text-luxury-gray mb-6">
                   A wide range of quality vehicles, with friendly support and flexible financing to fit your budget.
                 </p>
-                <Link to="/services/sales" className="text-luxury-silver hover:underline font-medium flex items-center">
+                <Link to="/services/sales" className="text-luxury-gold hover:underline font-medium flex items-center">
                   Learn more 
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
@@ -110,7 +110,7 @@ const Services = () => {
                 <p className="text-luxury-gray mb-6">
                   Specialists in locating and securing rare, exotic, and hard-to-find vehicles tailored to your specifications.
                 </p>
-                <Link to="/services/sourcing" className="text-luxury-silver hover:underline font-medium flex items-center">
+                <Link to="/services/sourcing" className="text-luxury-gold hover:underline font-medium flex items-center">
                   Learn more 
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
@@ -132,7 +132,7 @@ const Services = () => {
                 <p className="text-luxury-gray mb-6">
                   Tailored insurance solutions that match your lifestyle and safeguard your automotive investment.
                 </p>
-                <Link to="/services/insurance" className="text-luxury-silver hover:underline font-medium flex items-center">
+                <Link to="/services/insurance" className="text-luxury-gold hover:underline font-medium flex items-center">
                   Learn more 
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
@@ -154,7 +154,7 @@ const Services = () => {
                 <p className="text-luxury-gray mb-6">
                   Professional-grade detailing, vehicle wrapping, and premium tinting services to elevate your vehicle's look.
                 </p>
-                <Link to="/services/detailing" className="text-luxury-silver hover:underline font-medium flex items-center">
+                <Link to="/services/detailing" className="text-luxury-gold hover:underline font-medium flex items-center">
                   Learn more 
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
