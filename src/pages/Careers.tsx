@@ -298,7 +298,7 @@ const Careers = () => {
                       {job.overview}
                     </CardDescription>
                     <Button
-                      className="w-full bg-luxury-black hover:bg-gray-800"
+                      className="w-full bg-luxury-gold hover:bg-gray-800"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleJobClick(job);

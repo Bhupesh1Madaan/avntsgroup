@@ -217,7 +217,7 @@ const Layout: React.FC<{
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <div className="flex items-center mb-4">
-                <img src="/lovable-uploads/AVNTS-gold-08.png" alt="AVNTS Logo" className="h-96 mr-2"
+                <img src="/lovable-uploads/AVNTS-Silver-08.png" alt="AVNTS Logo" className="h-96 mr-2"
                 />
               </div>
             </div>
