@@ -4,14 +4,14 @@ import { Calendar, Clock } from 'lucide-react';
 
 const NewsStories = () => {
   const newsItems = [
-    {
-      id: 1,
-      title: "AVNTS Autogroup Expands Fleet with Latest Luxury Models",
-      excerpt: "We're excited to announce the addition of the newest luxury vehicles to our rental and sales inventory, offering our customers access to the latest automotive technology and style.",
-      date: "March 15, 2024",
-      readTime: "3 min read",
-      image: "/mercedes-3.jpg"
-    },
+    // {
+    //   id: 1,
+    //   title: "AVNTS Autogroup Expands Fleet with Latest Luxury Models",
+    //   excerpt: "We're excited to announce the addition of the newest luxury vehicles to our rental and sales inventory, offering our customers access to the latest automotive technology and style.",
+    //   date: "March 15, 2024",
+    //   readTime: "3 min read",
+    //   image: "/mercedes-3.jpg"
+    // },
     {
       id: 2,
       title: "New Insurance Partnership Brings Enhanced Coverage Options",
@@ -20,14 +20,14 @@ const NewsStories = () => {
       readTime: "2 min read",
       image: "/ferrari-3.jpg"
     },
-    {
-      id: 3,
-      title: "Customer Spotlight: Excellence in Vehicle Sourcing",
-      excerpt: "Read how our vehicle sourcing team helped a customer find their dream car through our exclusive network of dealers and manufacturers.",
-      date: "February 28, 2024",
-      readTime: "4 min read",
-      image: "/audi-2.jpg"
-    },
+    // {
+    //   id: 3,
+    //   title: "Customer Spotlight: Excellence in Vehicle Sourcing",
+    //   excerpt: "Read how our vehicle sourcing team helped a customer find their dream car through our exclusive network of dealers and manufacturers.",
+    //   date: "February 28, 2024",
+    //   readTime: "4 min read",
+    //   image: "/audi-2.jpg"
+    // },
     {
       id: 4,
       title: "Luxury Car Maintenance: Tips from Our Expert Team",

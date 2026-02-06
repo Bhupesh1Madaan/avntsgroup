@@ -11,27 +11,27 @@ const Careers = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const jobOpenings = [
-    {
-      id: 1,
-      title: "Sales & Financing Consultant",
-      location: "Toronto, ON",
-      type: "Full-time",
-      overview: "As a Sales & Financing Consultant, you will guide customers through the car-buying journey, helping them choose the right vehicle, secure financing, and complete their purchase. You will work with a range of customers—from first-time buyers to those with complex financing needs—and will be responsible for achieving sales targets while providing exceptional customer service.",
-      responsibilities: [
-        "Assist customers in selecting vehicles based on their needs and preferences",
-        "Explain financing options and assist with pre-approvals",
-        "Facilitate the sales process from inquiry to delivery",
-        "Collaborate with the financing team to ensure smooth loan processing",
-        "Maintain a strong knowledge of inventory and promotions",
-        "Meet monthly and quarterly sales goals"
-      ],
-      qualifications: [
-        "Proven experience in automotive sales or financing",
-        "Strong interpersonal and negotiation skills",
-        "Knowledge of financing options and terms",
-        "Ability to work under pressure and meet targets"
-      ]
-    },
+    // {
+    //   id: 1,
+    //   title: "Sales & Financing Consultant",
+    //   location: "Toronto, ON",
+    //   type: "Full-time",
+    //   overview: "As a Sales & Financing Consultant, you will guide customers through the car-buying journey, helping them choose the right vehicle, secure financing, and complete their purchase. You will work with a range of customers—from first-time buyers to those with complex financing needs—and will be responsible for achieving sales targets while providing exceptional customer service.",
+    //   responsibilities: [
+    //     "Assist customers in selecting vehicles based on their needs and preferences",
+    //     "Explain financing options and assist with pre-approvals",
+    //     "Facilitate the sales process from inquiry to delivery",
+    //     "Collaborate with the financing team to ensure smooth loan processing",
+    //     "Maintain a strong knowledge of inventory and promotions",
+    //     "Meet monthly and quarterly sales goals"
+    //   ],
+    //   qualifications: [
+    //     "Proven experience in automotive sales or financing",
+    //     "Strong interpersonal and negotiation skills",
+    //     "Knowledge of financing options and terms",
+    //     "Ability to work under pressure and meet targets"
+    //   ]
+    // },
     {
       id: 2,
       title: "Rental Manager",

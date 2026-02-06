@@ -72,10 +72,10 @@ const Services = () => {
                   </svg>
                 </Link>
               </div>
-            </div>
+            </div>  
 
             {/* Sales and Financing */}
-            <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            {/* <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
             <div className="h-48 bg-center bg-cover" style={{ backgroundImage: "url('/finance.jpg')" }}></div>
 
               <div className="p-6">
@@ -95,10 +95,10 @@ const Services = () => {
                   </svg>
                 </Link>
               </div>
-            </div>
+            </div> */}
 
             {/* Vehicle Sourcing */}
-            <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            {/* <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
             <div className="h-48 bg-center bg-cover" style={{ backgroundImage: "url('/STEV0000.png')" }}></div>
               <div className="p-6">
                 <div className="flex items-center mb-4">
@@ -117,7 +117,7 @@ const Services = () => {
                   </svg>
                 </Link>
               </div>
-            </div>
+            </div> */}
 
             {/* Insurance Services */}
             <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">

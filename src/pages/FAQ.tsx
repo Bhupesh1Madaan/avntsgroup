@@ -5,55 +5,55 @@ import { HelpCircle, ChevronDown } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const FAQ = () => {
-  const salesFinancingFaqs = [
-    {
-      question: "Do I need to have perfect credit to get approved for financing?",
-      answer: "No, you don't need perfect credit. At AVNTS AutoGroup, we work with a wide network of lenders to get you approved, no matter your credit history. We specialize in helping customers with all types of credit—good, bad, or no credit at all. Our goal is to find the best possible financing options for you."
-    },
-    {
-      question: "How do I get pre-approved for financing?",
-      answer: "To get pre-approved, simply fill out our online pre-approval application form. We'll ask for basic information like your desired vehicle, personal details, and financial status. Once we have that, we'll match you with the best financing options from our extensive network of trusted lenders."
-    },
-    {
-      question: "How long does it take to get approved?",
-      answer: "The approval process is quick! Once you submit your pre-approval application, we typically have an answer within 24 to 48 hours. We understand that time is of the essence, and we aim to get you into your new vehicle as quickly as possible."
-    },
-    {
-      question: "Do you offer financing for all vehicles?",
-      answer: "Yes, we offer financing for all the vehicles in our inventory, whether new or pre-owned. We work with a variety of lenders to ensure that we can provide flexible terms and competitive rates for every vehicle."
-    },
-    {
-      question: "What kind of interest rates can I expect?",
-      answer: "Interest rates vary based on several factors, including your credit score, loan term, and the vehicle you're purchasing. At AVNTS AutoGroup, we aim to offer competitive rates regardless of your credit score. Our finance team will work with you to secure the best possible terms."
-    },
-    {
-      question: "Can I trade in my current vehicle?",
-      answer: "Yes, we accept trade-ins! If you're looking to upgrade, we'll provide you with a competitive trade-in offer based on your vehicle's value. This can be used as a down payment toward your new car."
-    },
-    {
-      question: "What documents do I need to provide for financing?",
-      answer: "To complete your financing application, we typically require the following documents: Valid government-issued ID, Proof of income (pay stubs, tax returns, or bank statements), Proof of residence (utility bill or lease agreement), Your driver's license, A copy of your credit report (if available)."
-    },
-    {
-      question: "Can I get financing with a low credit score?",
-      answer: "Absolutely. We specialize in securing financing for clients with all types of credit scores, including those with low or no credit history. Our extensive network of lenders ensures that we can find solutions tailored to your situation."
-    },
-    {
-      question: "Do you work with all lenders?",
-      answer: "Yes, we work with a wide variety of lenders, including major banks, credit unions, and alternative lenders. This allows us to offer flexible terms and find the best financing options for our customers, regardless of their credit profile."
-    },
-    {
-      question: "Is the financing process only available for purchases?",
-      answer: "While we primarily offer financing for vehicle purchases, we also offer financing for lease buyouts, long-term rentals, and fleet purchases. If you have any questions about financing specific to your needs, reach out to our team, and we'll be happy to assist."
-    },
-    {
-      question: "How can I check my financing eligibility?",
-      answer: "The best way to check your eligibility is to fill out our pre-approval application online. This will give you a good sense of what financing options are available to you based on your credit, income, and other factors."
-    },
-    {
-      question: "Can I make changes to my financing terms after approval?",
-      answer: "Once you've been approved and the terms are set, changes can be made, but they may depend on your lender's policies. If you need to make adjustments, let us know, and we'll work with the lender to find a solution that works best for you."
-    }
+  const Faqs = [
+  //   {
+  //     question: "Do I need to have perfect credit to get approved for financing?",
+  //     answer: "No, you don't need perfect credit. At AVNTS AutoGroup, we work with a wide network of lenders to get you approved, no matter your credit history. We specialize in helping customers with all types of credit—good, bad, or no credit at all. Our goal is to find the best possible financing options for you."
+  //   },
+  //   {
+  //     question: "How do I get pre-approved for financing?",
+  //     answer: "To get pre-approved, simply fill out our online pre-approval application form. We'll ask for basic information like your desired vehicle, personal details, and financial status. Once we have that, we'll match you with the best financing options from our extensive network of trusted lenders."
+  //   },
+  //   {
+  //     question: "How long does it take to get approved?",
+  //     answer: "The approval process is quick! Once you submit your pre-approval application, we typically have an answer within 24 to 48 hours. We understand that time is of the essence, and we aim to get you into your new vehicle as quickly as possible."
+  //   },
+  //   {
+  //     question: "Do you offer financing for all vehicles?",
+  //     answer: "Yes, we offer financing for all the vehicles in our inventory, whether new or pre-owned. We work with a variety of lenders to ensure that we can provide flexible terms and competitive rates for every vehicle."
+  //   },
+  //   {
+  //     question: "What kind of interest rates can I expect?",
+  //     answer: "Interest rates vary based on several factors, including your credit score, loan term, and the vehicle you're purchasing. At AVNTS AutoGroup, we aim to offer competitive rates regardless of your credit score. Our finance team will work with you to secure the best possible terms."
+  //   },
+  //   {
+  //     question: "Can I trade in my current vehicle?",
+  //     answer: "Yes, we accept trade-ins! If you're looking to upgrade, we'll provide you with a competitive trade-in offer based on your vehicle's value. This can be used as a down payment toward your new car."
+  //   },
+  //   {
+  //     question: "What documents do I need to provide for financing?",
+  //     answer: "To complete your financing application, we typically require the following documents: Valid government-issued ID, Proof of income (pay stubs, tax returns, or bank statements), Proof of residence (utility bill or lease agreement), Your driver's license, A copy of your credit report (if available)."
+  //   },
+  //   {
+  //     question: "Can I get financing with a low credit score?",
+  //     answer: "Absolutely. We specialize in securing financing for clients with all types of credit scores, including those with low or no credit history. Our extensive network of lenders ensures that we can find solutions tailored to your situation."
+  //   },
+  //   {
+  //     question: "Do you work with all lenders?",
+  //     answer: "Yes, we work with a wide variety of lenders, including major banks, credit unions, and alternative lenders. This allows us to offer flexible terms and find the best financing options for our customers, regardless of their credit profile."
+  //   },
+  //   {
+  //     question: "Is the financing process only available for purchases?",
+  //     answer: "While we primarily offer financing for vehicle purchases, we also offer financing for lease buyouts, long-term rentals, and fleet purchases. If you have any questions about financing specific to your needs, reach out to our team, and we'll be happy to assist."
+  //   },
+  //   {
+  //     question: "How can I check my financing eligibility?",
+  //     answer: "The best way to check your eligibility is to fill out our pre-approval application online. This will give you a good sense of what financing options are available to you based on your credit, income, and other factors."
+  //   },
+  //   {
+  //     question: "Can I make changes to my financing terms after approval?",
+  //     answer: "Once you've been approved and the terms are set, changes can be made, but they may depend on your lender's policies. If you need to make adjustments, let us know, and we'll work with the lender to find a solution that works best for you."
+  //   }
   ];
 
   const servicesFaqs = [
@@ -143,10 +143,10 @@ const FAQ = () => {
             {/* Sales & Financing FAQs Section */}
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-luxury-black mb-8 text-left">
-                Sales & Financing FAQs
+                FAQs
               </h2>
               <Accordion type="single" collapsible className="space-y-4">
-                {salesFinancingFaqs.map((faq, index) => (
+                {Faqs.map((faq, index) => (
                   <AccordionItem 
                     key={index} 
                     value={`sales-${index}`}

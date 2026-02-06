@@ -38,7 +38,7 @@ const Layout: React.FC<{
 
               {/* Services dropdown */}
               <div className="relative group">
-                <Link to="/services" className={`font-medium transition-colors flex items-center ${isActive('/services') || isActive('/services/rentals') || isActive('/services/management') || isActive('/services/detailing') || isActive('/services/insurance') || isActive('/services/sales') || isActive('/services/sourcing') ? 'text-luxury-gold' : 'text-white hover:text-luxury-gold'}`}>
+                <Link to="/services" className={`font-medium transition-colors flex items-center ${isActive('/services') || {/* isActive('/services/rentals')*/ } || isActive('/services/management') || isActive('/services/detailing') || isActive('/services/insurance') || {/*isActive('/services/sales') || isActive('/services / sourcing')*/ } ? 'text-luxury-gold' : 'text-white hover:text-luxury-gold'}`}>
                   Services
                 </Link>
 
@@ -53,14 +53,14 @@ const Layout: React.FC<{
                       <Settings size={16} className="mr-2" />
                       <span>Car Rental Management</span>
                     </Link>
-                    <Link to="/services/sales" className="flex items-center px-4 py-2 hover:bg-gray-100">
+                    {/* <Link to="/services/sales" className="flex items-center px-4 py-2 hover:bg-gray-100">
                       <DollarSign size={16} className="mr-2" />
                       <span>Vehicle Sales</span>
-                    </Link>
-                    <Link to="/services/sourcing" className="flex items-center px-4 py-2 hover:bg-gray-100">
+                    </Link> */}
+                    {/* <Link to="/services/sourcing" className="flex items-center px-4 py-2 hover:bg-gray-100">
                       <Search size={16} className="mr-2" />
                       <span>Vehicle Sourcing</span>
-                    </Link>
+                    </Link> */}
                     <Link to="/services/insurance" className="flex items-center px-4 py-2 hover:bg-gray-100">
                       <Shield size={16} className="mr-2" />
                       <span>Insurance Services</span>
@@ -146,14 +146,14 @@ const Layout: React.FC<{
                   <Settings size={14} className="mr-2" />
                   <span>Car Rental Management</span>
                 </Link>
-                <Link to="/services/sales" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
+                {/* <Link to="/services/sales" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
                   <DollarSign size={14} className="mr-2" />
                   <span>Vehicle Sales</span>
-                </Link>
-                <Link to="/services/sourcing" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
+                </Link> */}
+                {/* <Link to="/services/sourcing" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
                   <Search size={14} className="mr-2" />
                   <span>Vehicle Sourcing</span>
-                </Link>
+                </Link> */}
                 <Link to="/services/insurance" className="flex items-center text-sm text-gray-300 hover:text-luxury-gold" onClick={() => setMobileMenuOpen(false)}>
                   <Shield size={14} className="mr-2" />
                   <span>Insurance Services</span>

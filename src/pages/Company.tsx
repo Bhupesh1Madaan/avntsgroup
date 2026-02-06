@@ -66,12 +66,12 @@ const Company = () => {
               <Link to="/services/management" className="text-luxury-gold hover:underline font-medium">
                 Rental Management
               </Link>
-              <Link to="/services/sales" className="text-luxury-gold hover:underline font-medium">
+              {/* <Link to="/services/sales" className="text-luxury-gold hover:underline font-medium">
                 Vehicle Sales
-              </Link>
-              <Link to="/services/sourcing" className="text-luxury-gold hover:underline font-medium">
+              </Link> */}
+              {/* <Link to="/services/sourcing" className="text-luxury-gold hover:underline font-medium">
                 Vehicle Sourcing
-              </Link>
+              </Link> */}
               <Link to="/services/insurance" className="text-luxury-gold hover:underline font-medium">
                 Insurance Services
               </Link>
