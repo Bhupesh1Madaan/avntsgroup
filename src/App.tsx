@@ -43,11 +43,11 @@ const App = () => (
           <Route path="/careers" element={<Careers />} />
           
           {/* Service Routes */}
-          {/* <Route path="/services/rentals" element={<CarRentals />} /> */}
+          <Route path="/services/rentals" element={<CarRentals />} />
           <Route path="/services/management" element={<RentalManagement />} />
           {/* <Route path="/services/sales" element={<CarSalesFinancing />} /> */}
           {/* <Route path="/services/sourcing" element={<VehicleSourcing />} /> */}
-          {/* <Route path="/services/insurance" element={<InsuranceServices />} /> */}
+          <Route path="/services/insurance" element={<InsuranceServices />} />
           <Route path="/services/detailing" element={<DetailingWrappingTinting />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
