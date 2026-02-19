@@ -1,8 +1,10 @@
-import React from 'react';
+// import React from 'react';
 import Layout from '@/components/Layout';
 import { Wrench, CheckCircle } from 'lucide-react';
+import React, { useState } from 'react';
 
 const DetailingWrappingTinting = () => {
+  const [isConsultOpen, setIsConsultOpen] = useState(false);
   return (
     <Layout>
       {/* Hero Section */}
@@ -58,14 +60,12 @@ const DetailingWrappingTinting = () => {
               </div>
 
               <div className="text-center mt-8">
-                <a
-                  href="https://calendly.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => setIsConsultOpen(true)}
                   className="gold-button inline-flex items-center"
                 >
                   Book a Consultation
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -146,6 +146,44 @@ const DetailingWrappingTinting = () => {
           </div>
         </div>
       </div>
+      {/* Detailing & Wrapping Modal */}
+      {isConsultOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+
+          {/* Overlay */}
+          <div
+            className="absolute inset-0 bg-black/70"
+            onClick={() => setIsConsultOpen(false)}
+          />
+
+          {/* Modal Box */}
+          <div className="relative bg-white w-full max-w-4xl mx-4 rounded-2xl shadow-2xl z-50">
+
+            {/* Close Button */}
+            <button
+              onClick={() => setIsConsultOpen(false)}
+              className="absolute top-4 right-4 text-gray-600 hover:text-black text-2xl"
+            >
+              ×
+            </button>
+
+            {/* Modal Content */}
+            <div className="h-[90vh] overflow-hidden p-6">
+
+              <h2 className="text-2xl font-bold mb-4 text-center">
+                Detailing & Wrapping Consultation
+              </h2>
+
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/form/UsgmussDEyj9w4vMX1vj"
+                className="w-full h-full border-0"
+                title="Detailing & Wrapping Form"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
     </Layout>
   );
 };

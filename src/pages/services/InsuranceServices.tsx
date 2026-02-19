@@ -1,10 +1,14 @@
 
-import React from 'react';
+// import React from 'react';
+import React, { useState } from 'react';
 import Layout from '@/components/Layout';
 import { Shield, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+
+
 const InsuranceServices = () => {
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   return (
     <Layout>
       {/* Hero Section */}
@@ -58,7 +62,12 @@ const InsuranceServices = () => {
               </p>
 
               <div className="text-center">
-                <Link to="/contact#contact-form" className="gold-button">Get a Quote</Link>
+                <button
+                  className="gold-button"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
+                  Get a Quote
+                </button>
               </div>
             </div>
           </div>
@@ -155,6 +164,44 @@ const InsuranceServices = () => {
           </div>
         </div>
       </div>
+      {/* Insurance Quote Modal */}
+      {isQuoteOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+
+          {/* Overlay */}
+          <div
+            className="absolute inset-0 bg-black/70"
+            onClick={() => setIsQuoteOpen(false)}
+          />
+
+          {/* Modal Box */}
+          <div className="relative bg-white w-full max-w-4xl mx-4 rounded-2xl shadow-2xl z-50">
+
+            {/* Close Button */}
+            <button
+              onClick={() => setIsQuoteOpen(false)}
+              className="absolute top-4 right-4 text-gray-600 hover:text-black text-2xl"
+            >
+              ×
+            </button>
+
+            {/* Modal Content */}
+            <div className="h-[90vh] overflow-hidden p-6">
+
+              <h2 className="text-2xl font-bold mb-4 text-center">
+                Insurance Quote Request
+              </h2>
+
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/form/lNQzyhWO53GFrDicZfJZ"
+                className="w-full h-full border-0"
+                title="Insurance Services Form"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
     </Layout>
   );
 };

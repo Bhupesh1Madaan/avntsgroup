@@ -1,9 +1,11 @@
-import React from 'react';
+// import React from 'react';
 import Layout from '@/components/Layout';
 import { Settings, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import React, { useState } from "react";
 
 const RentalManagement = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <Layout>
       <div className="min-h-screen bg-white">
@@ -194,14 +196,12 @@ const RentalManagement = () => {
                 Join our exclusive fleet management program and start earning from your luxury vehicles today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="https://calendly.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => setIsOpen(true)}
                   className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
                 >
                   Schedule Consultation
-                </a>
+                </button>
                 <Link
                   to="/contact"
                   className="border-2 border-black text-black px-8 py-4 rounded-lg font-semibold hover:bg-black hover:text-white transition-colors"
@@ -213,6 +213,39 @@ const RentalManagement = () => {
           </div>
         </section>
       </div>
+      {/* MODAL */}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+
+          {/* Overlay */}
+          <div
+            className="absolute inset-0 bg-black/70"
+            onClick={() => setIsOpen(false)}
+          />
+
+          {/* Modal Content */}
+          <div className="relative bg-white w-full max-w-4xl mx-4 rounded-2xl shadow-2xl z-50">
+
+            {/* Close Button */}
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-4 right-4 text-gray-600 hover:text-black text-2xl"
+            >
+              ×
+            </button>
+
+            {/* Form Container */}
+            <div className="h-[85vh] overflow-y-auto">
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/form/wXNiB2VTBaCbzglvvbNn"
+                className="w-full h-full border-0"
+                title="Car Rental Management Form"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
     </Layout>
   );
 };

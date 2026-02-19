@@ -214,6 +214,8 @@ const Cars = () => {
   const [selectedModel, setSelectedModel] = useState('All');
   const [minYear, setMinYear] = useState('');
   const [maxYear, setMaxYear] = useState('');
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [bookingCar, setBookingCar] = useState(null);
 
   // Dialog state
   const [selectedCar, setSelectedCar] = useState<null | typeof carsData[0]>(null);
@@ -424,11 +426,16 @@ const Cars = () => {
               <p className="text-luxury-gray mb-4">{car.description}</p>
               <div className="flex justify-between items-center">
                 <span className="text-lg font-bold text-luxury-gold">${car.daily}/day</span>
-                <Link to="/contact" className="gold-button" onClick={e => {
-                  e.stopPropagation(); // Prevent opening the dialog when clicking the button
-                }}>
+                <button
+                  className="gold-button"
+                  onClick={e => {
+                    e.stopPropagation();
+                    setBookingCar(car);
+                    setIsBookingOpen(true);
+                  }}
+                >
                   Book Now
-                </Link>
+                </button>
               </div>
             </div>
           </div>)}
@@ -452,6 +459,44 @@ const Cars = () => {
 
     {/* Car Image Dialog */}
     {selectedCar && <CarImageDialog isOpen={isDialogOpen} onClose={closeCarDialog} car={selectedCar} additionalImages={selectedCar.additionalImages || []} />}
+    {/* Booking Modal */}
+    {isBookingOpen && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center">
+
+        {/* Overlay */}
+        <div
+          className="absolute inset-0 bg-black/70"
+          onClick={() => setIsBookingOpen(false)}
+        />
+
+        {/* Modal Box */}
+        <div className="relative bg-white w-full max-w-4xl mx-4 rounded-2xl shadow-2xl z-50">
+
+          {/* Close Button */}
+          <button
+            onClick={() => setIsBookingOpen(false)}
+            className="absolute top-4 right-4 text-gray-600 hover:text-black text-2xl"
+          >
+            ×
+          </button>
+
+          {/* Modal Content */}
+          <div className="h-[85vh] overflow-y-auto p-6">
+
+            <h2 className="text-2xl font-bold mb-4 text-center">
+              Book {bookingCar?.name}
+            </h2>
+
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/form/W1z4Al3TtKdn4u2SIvm7"
+              className="w-full h-[1200px] border-0"
+              title="Car Rental Booking Form"
+            />
+          </div>
+        </div>
+      </div>
+    )}
+
   </Layout>;
 };
 export default Cars;
