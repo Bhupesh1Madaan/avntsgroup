@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,14 +13,17 @@ import NewsStories from "./pages/NewsStories";
 import FAQ from "./pages/FAQ";
 import Careers from "./pages/Careers";
 import NotFound from "./pages/NotFound";
+import FormPage from "./pages/FormPage";
 
 // Service Pages
 import CarRentals from "./pages/services/CarRentals";
 import RentalManagement from "./pages/services/RentalManagement";
 import DetailingWrappingTinting from "./pages/services/DetailingWrappingTinting";
 import InsuranceServices from "./pages/services/InsuranceServices";
-// import CarSalesFinancing from "./pages/services/CarSalesFinancing";
-// import VehicleSourcing from "./pages/services/VehicleSourcing";
+import CarSalesFinancing from "./pages/services/CarSalesFinancing";
+import MechanicalService from "./pages/services/MechanicalService";
+import AutobodyCollision from "./pages/services/AutobodyCollision";
+import AccidentInjury from "./pages/services/AccidentInjury";
 
 const queryClient = new QueryClient();
 
@@ -45,12 +47,15 @@ const App = () => (
           {/* Service Routes */}
           <Route path="/services/rentals" element={<CarRentals />} />
           <Route path="/services/management" element={<RentalManagement />} />
-          {/* <Route path="/services/sales" element={<CarSalesFinancing />} /> */}
-          {/* <Route path="/services/sourcing" element={<VehicleSourcing />} /> */}
+          <Route path="/services/sales" element={<CarSalesFinancing />} />
           <Route path="/services/insurance" element={<InsuranceServices />} />
           <Route path="/services/detailing" element={<DetailingWrappingTinting />} />
+          <Route path="/services/mechanical" element={<MechanicalService />} />
+          <Route path="/services/autobody" element={<AutobodyCollision />} />
+          <Route path="/services/injury" element={<AccidentInjury />} />
           
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/form/:serviceId" element={<FormPage />} />
+          
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

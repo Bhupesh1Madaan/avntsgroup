@@ -1,191 +1,103 @@
-// import React from 'react';
+import React from 'react';
 import Layout from '@/components/Layout';
-import { Wrench, CheckCircle } from 'lucide-react';
-import React, { useState } from 'react';
+import { CheckCircle, Star, Shield, Droplets } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const DetailingWrappingTinting = () => {
-  const [isConsultOpen, setIsConsultOpen] = useState(false);
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative h-[50vh] bg-luxury-black flex items-center">
-        <div className="absolute inset-0 bg-[url('/AVNTS%20Car%20Pictures/FILLER%20PHOTOS/Mercedes/DSC00365-Enhanced-SR.jpg')] bg-cover bg-center opacity-40"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-              Detailing, Wrapping & <span className="text-luxury-gold">Tinting</span>
+      <div className="min-h-screen bg-white">
+        {/* Hero Section */}
+        <section className="relative h-[80vh] flex items-center overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/STEV4577.jpg')] bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="container mx-auto px-4 relative z-10 text-center">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              Detailing & <span className="text-luxury-gold">Protection</span>
             </h1>
-            <p className="text-xl text-white">
-              Premium care for luxury vehicles
+            <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto">
+              Preserve your vehicle's beauty with our premium detailing, ceramic coating, and wrapping services.
             </p>
+            <Link to="/form/detailing" className="gold-button px-10 py-4 text-lg">
+              Book Your Detail
+            </Link>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden mt-12">
-            <div className="p-8">
-              <div className="flex items-center mb-6">
-                <Wrench size={32} className="text-luxury-gold mr-4" />
-                <h2 className="text-2xl font-serif font-bold">Perfection in Every Detail</h2>
-              </div>
-
-              <p className="text-gray-700 mb-8">
-                Preserve and elevate the look of your car with our professional-grade services. AVNTS
-                Autogroup offers detailing, vehicle wrapping, and premium tinting — all executed to the
-                highest industry standards.
-              </p>
-
-              <div className="bg-gray-50 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-xl mb-4">Our Services:</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-center">
-                    <CheckCircle size={18} className="text-luxury-gold mr-2" />
-                    <span>Ceramic Coating & Paint Protection</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle size={18} className="text-luxury-gold mr-2" />
-                    <span>Full & Partial Vinyl Wraps</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle size={18} className="text-luxury-gold mr-2" />
-                    <span>High-Performance Window Tints</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle size={18} className="text-luxury-gold mr-2" />
-                    <span>Interior & Exterior Detailing Packages</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="text-center mt-8">
-                <button
-                  onClick={() => setIsConsultOpen(true)}
-                  className="gold-button inline-flex items-center"
-                >
-                  Book a Consultation
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Process Steps */}
-          <div className="mt-12">
-            <h2 className="text-3xl font-serif font-bold text-center mb-12">Our Process</h2>
-            <div className="space-y-8">
-              {/* Step 1 */}
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center text-2xl font-bold text-black">
-                    1
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="relative">
-                    <img
-                      src="/AVNTS Car Pictures/FILLER PHOTOS/Mercedes/DSC00366-Enhanced-SR.jpg"
-                      alt="Step 1: Assessment"
-                      className="w-full h-64 object-cover rounded-xl shadow-lg"
-                    />
-                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-                      <span className="text-sm font-semibold text-gray-800">Step 1</span>
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold mt-4 mb-2">Assessment & Consultation</h3>
-                  <p className="text-gray-600">We evaluate your vehicle's condition and discuss your vision for the perfect finish.</p>
-                </div>
-              </div>
-
-              {/* Step 2 */}
-              <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center text-2xl font-bold text-black">
-                    2
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="relative">
-                    <img
-                      src="/AVNTS Car Pictures/FILLER PHOTOS/Ferrari/DSC00403-Enhanced-NR.jpg"
-                      alt="Step 2: Preparation"
-                      className="w-full h-64 object-cover rounded-xl shadow-lg"
-                    />
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-                      <span className="text-sm font-semibold text-gray-800">Step 2</span>
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold mt-4 mb-2">Preparation & Protection</h3>
-                  <p className="text-gray-600">Professional-grade preparation ensures flawless results and long-lasting protection.</p>
-                </div>
-              </div>
-
-              {/* Step 3 */}
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center text-2xl font-bold text-black">
-                    3
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="relative">
-                    <img
-                      src="/AVNTS Car Pictures/FILLER PHOTOS/BMW/DSC00372-Enhanced-NR.jpg"
-                      alt="Step 3: Final Result"
-                      className="w-full h-64 object-cover rounded-xl shadow-lg"
-                    />
-                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-                      <span className="text-sm font-semibold text-gray-800">Step 3</span>
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold mt-4 mb-2">Perfection Delivered</h3>
-                  <p className="text-gray-600">Your vehicle is transformed with meticulous attention to detail and premium materials.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* Detailing & Wrapping Modal */}
-      {isConsultOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-
-          {/* Overlay */}
-          <div
-            className="absolute inset-0 bg-black/70"
-            onClick={() => setIsConsultOpen(false)}
-          />
-
-          {/* Modal Box */}
-          <div className="relative bg-white w-full max-w-4xl mx-4 rounded-2xl shadow-2xl z-50">
-
-            {/* Close Button */}
-            <button
-              onClick={() => setIsConsultOpen(false)}
-              className="absolute top-4 right-4 text-gray-600 hover:text-black text-2xl"
-            >
-              ×
-            </button>
-
-            {/* Modal Content */}
-            <div className="h-[90vh] overflow-hidden p-6">
-
-              <h2 className="text-2xl font-bold mb-4 text-center">
-                Detailing & Wrapping Consultation
-              </h2>
-
-              <iframe
-                src="https://api.leadconnectorhq.com/widget/form/UsgmussDEyj9w4vMX1vj"
-                className="w-full h-full border-0"
-                title="Detailing & Wrapping Form"
+        {/* Services Grid */}
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-3 gap-8">
+              <DetailingCard 
+                icon={<Droplets size={32} className="text-luxury-gold" />}
+                title="Ceramic Coating"
+                desc="Long-lasting protection and incredible shine with our 2, 5, and 9-year coating options."
+              />
+              <DetailingCard 
+                icon={<Shield size={32} className="text-luxury-gold" />}
+                title="PPF & Wrapping"
+                desc="Protect your paint from stone chips and scratches, or completely change its look with a custom wrap."
+              />
+              <DetailingCard 
+                icon={<Star size={32} className="text-luxury-gold" />}
+                title="Interior Detail"
+                desc="Deep cleaning and restoration for your cabin, including leather conditioning and steam cleaning."
               />
             </div>
           </div>
-        </div>
-      )}
+        </section>
 
+        {/* Comparison Section */}
+        <section className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold mb-12">The AVNTS Difference</h2>
+            <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                <h3 className="text-xl font-bold mb-6">Standard Detail</h3>
+                <ul className="space-y-4 text-left text-gray-600">
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-gray-400" /> Basic wash and dry</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-gray-400" /> Quick vacuum</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-gray-400" /> Wipe down dashboard</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-gray-400" /> Tire shine</li>
+                </ul>
+              </div>
+              <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-luxury-gold relative transform md:scale-105">
+                <div className="absolute top-0 right-8 -translate-y-1/2 bg-luxury-gold text-black px-4 py-1 rounded-full text-xs font-bold uppercase">Our Standard</div>
+                <h3 className="text-xl font-bold mb-6">AVNTS Premium</h3>
+                <ul className="space-y-4 text-left text-gray-800">
+                  <li className="flex items-center gap-2 font-medium"><CheckCircle size={16} className="text-luxury-gold" /> Full decontamination wash</li>
+                  <li className="flex items-center gap-2 font-medium"><CheckCircle size={16} className="text-luxury-gold" /> Multi-stage interior steam clean</li>
+                  <li className="flex items-center gap-2 font-medium"><CheckCircle size={16} className="text-luxury-gold" /> Clay bar treatment</li>
+                  <li className="flex items-center gap-2 font-medium"><CheckCircle size={16} className="text-luxury-gold" /> Machine polish & protection</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="mt-16">
+               <Link to="/form/detailing" className="gold-button px-12 py-5 text-xl font-bold">
+                 Choose Your Package
+               </Link>
+            </div>
+          </div>
+        </section>
+      </div>
     </Layout>
   );
 };
+
+function DetailingCard({ icon, title, desc }: any) {
+  return (
+    <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all group">
+      <div className="w-16 h-16 bg-luxury-gold/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-luxury-gold transition-colors group-hover:text-black">
+        {icon}
+      </div>
+      <h3 className="text-xl font-bold mb-4">{title}</h3>
+      <p className="text-gray-600 mb-6">{desc}</p>
+      <Link to="/form/detailing" className="text-luxury-gold font-bold flex items-center gap-1 hover:gap-2 transition-all">
+        Learn More →
+      </Link>
+    </div>
+  );
+}
 
 export default DetailingWrappingTinting;
