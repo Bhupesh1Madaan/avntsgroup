@@ -1,7 +1,27 @@
 import React, { useState, useRef } from 'react';
 
 const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/dpEhUNA24tzTJXmQ2EBH/webhook-trigger/lFwNcdh8m73nk7G4n7AI';
-const SHEETS_WEBHOOK = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+const SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbzlN1LezMPwnkOJgCB90vSxLtH02GvtkQAKU4Fr--4UAJgtA-Hxecx3fNdBG5MpBKdq/exec';
+
+// ── Cloudinary image upload (free tier) ──────────────────────────────────────
+// To enable: create a free Cloudinary account at https://cloudinary.com
+// Get your Cloud Name + Upload Preset (unsigned) from Settings → Upload
+const CLOUDINARY_CLOUD_NAME = 'PASTE_YOUR_CLOUD_NAME';
+const CLOUDINARY_UPLOAD_PRESET = 'PASTE_YOUR_UNSIGNED_PRESET';
+
+async function uploadToCloudinary(file: File): Promise<string> {
+  const fd = new FormData();
+  fd.append('file', file);
+  fd.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+  const res = await fetch(
+    `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+    { method: 'POST', body: fd }
+  );
+  if (!res.ok) throw new Error('Cloudinary upload failed');
+  const data = await res.json();
+  return data.secure_url as string;
+}
+// ─────────────────────────────────────────────────────────────────────────────
 
 const GOLD = '#C9A54E';
 const DARK = '#0C0C0E';
@@ -78,6 +98,114 @@ function getBudgetMid(b: string) {
   return map[b] || 0;
 }
 
+// ── Styles (defined once, outside component) ─────────────────────────────────
+const S: Record<string, React.CSSProperties> = {
+  input: { width: '100%', boxSizing: 'border-box', background: DARK3, border: `0.5px solid ${BORDER}`, borderRadius: 3, color: '#D8D4CA', padding: '12px 14px', fontSize: 14, fontFamily: 'inherit', outline: 'none', transition: 'border-color 0.2s' },
+  inputErr: { width: '100%', boxSizing: 'border-box', background: DARK3, border: `0.5px solid #e04848`, borderRadius: 3, color: '#D8D4CA', padding: '12px 14px', fontSize: 14, fontFamily: 'inherit', outline: 'none' },
+  label: { fontSize: 11, letterSpacing: '1.2px', textTransform: 'uppercase' as const, color: MUTED, display: 'block', marginBottom: 5 },
+  grid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '18px 14px' },
+  h2: { fontFamily: "'Cormorant Garamond',Georgia,serif", color: '#F0EBE0', fontSize: 24, fontWeight: 400, margin: '0 0 3px' },
+  sub: { fontSize: 13, color: '#6A6A70', margin: '0 0 22px' },
+};
+
+// ── Sub-components defined OUTSIDE main component so React doesn't remount them ──
+
+const Input = ({ label, placeholder, value, onChange, type = 'text', full = false, note = '', err = false }: any) => (
+  <div style={full ? { gridColumn: '1/-1' } : {}}>
+    <label style={S.label}>{label}</label>
+    <input type={type} placeholder={placeholder} value={value} onChange={(e: any) => onChange(e.target.value)}
+      style={err ? S.inputErr : S.input}
+      onFocus={(e: any) => { e.target.style.borderColor = GOLD + '88'; }}
+      onBlur={(e: any) => { e.target.style.borderColor = err ? '#e04848' : BORDER; }} />
+    {note && <p style={{ fontSize: 11, color: '#44444A', margin: '5px 0 0', lineHeight: 1.4 }}>{note}</p>}
+    {err && <p style={{ fontSize: 11, color: '#e04848', margin: '4px 0 0' }}>This field is required.</p>}
+  </div>
+);
+
+const Sel = ({ label, options, value, onChange, placeholder = 'Select...', full = false, err = false }: any) => (
+  <div style={full ? { gridColumn: '1/-1' } : {}}>
+    <label style={S.label}>{label}</label>
+    <select value={value} onChange={(e: any) => onChange(e.target.value)}
+      style={{ ...(err ? S.inputErr : S.input), appearance: 'none', WebkitAppearance: 'none', backgroundImage: `url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236E6E74' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 14px center', paddingRight: 36 }}>
+      <option value="">{placeholder}</option>
+      {options.map((o: string) => <option key={o} value={o}>{o}</option>)}
+    </select>
+    {err && <p style={{ fontSize: 11, color: '#e04848', margin: '4px 0 0' }}>This field is required.</p>}
+  </div>
+);
+
+const RG = ({ name, options, value, onChange, max }: any) => (
+  <div style={{ display: 'flex', gap: 8, marginTop: 6, maxWidth: max || 'none', flexWrap: 'wrap' as const }}>
+    {options.map((o: any) => (
+      <label key={o.v} style={{ textTransform: 'none', letterSpacing: 0, fontSize: 13, color: value === o.v ? '#D8D4CA' : '#8A8A90', display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', background: value === o.v ? '#1E1E24' : DARK3, border: `0.5px solid ${value === o.v ? GOLD + '55' : BORDER}`, borderRadius: 3, padding: '9px 16px', flex: 1, justifyContent: 'center', transition: 'all 0.2s', minWidth: 60 }}>
+        <input type="radio" name={name} checked={value === o.v} onChange={() => onChange(o.v)} style={{ accentColor: GOLD }} />{o.l}
+      </label>
+    ))}
+  </div>
+);
+
+const Div = () => <hr style={{ border: 'none', borderTop: '0.5px solid #1E1E24', margin: '20px 0' }} />;
+
+const UZ = ({ label, icon, preview, onClick }: any) => (
+  <div onClick={onClick} style={{ border: preview ? `0.5px solid ${GOLD}44` : '1px dashed #2E2E34', borderRadius: 6, padding: preview ? 0 : '28px 16px', textAlign: 'center', background: DARK2, cursor: 'pointer', overflow: 'hidden', minHeight: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+    {preview ? <img src={preview} alt={label} style={{ width: '100%', height: 120, objectFit: 'cover', borderRadius: 6 }} /> : (
+      <>{icon}<p style={{ margin: '8px 0 0', fontSize: 12, color: '#5E5E64' }}>{label}</p><span style={{ fontSize: 11, color: GOLD, marginTop: 4 }}>Tap to upload</span></>
+    )}
+  </div>
+);
+
+const TrustBar = () => (
+  <div style={{ background: DARK, borderRadius: 12, padding: '14px 24px', marginTop: 24, border: '0.5px solid #1A1A20' }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, flexWrap: 'wrap' }}>
+      <span style={{ fontSize: 11, color: '#5E5E64' }}>1,200+ clients matched</span>
+      <span style={{ fontSize: 11, color: GOLD }}>★★★★★ <span style={{ color: '#8A8A90' }}>4.9 on Google</span></span>
+      <span style={{ fontSize: 11, color: '#5E5E64' }}>Trusted partner network</span>
+      <span style={{ fontSize: 11, color: '#5E5E64' }}>Free to apply</span>
+    </div>
+  </div>
+);
+
+const Tag = ({ n, total }: any) => (
+  <div style={{ fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', color: GOLD, margin: '0 0 14px', padding: '3px 0', borderBottom: `0.5px solid ${GOLD}22`, display: 'inline-block' }}>
+    {n === 'final' ? 'Final step' : `Step ${n} of ${total}`}
+  </div>
+);
+
+// ── Head and Foot need step/TOTAL passed as props ────────────────────────────
+const Head = ({ step, total }: { step: number; total: number }) => (
+  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '18px 24px', borderBottom: '0.5px solid #1E1E24' }}>
+    <div style={{ color: LIGHT, fontSize: 17, letterSpacing: 3, fontWeight: 500 }}>
+      <span style={{ color: GOLD }}>AVNTS</span>
+      <span style={{ fontSize: 10, letterSpacing: '1.5px', color: '#5E5E64', marginLeft: 6, textTransform: 'uppercase', fontWeight: 400 }}>Auto Group</span>
+    </div>
+    <div style={{ display: 'flex', gap: 4 }}>
+      {Array.from({ length: total }).map((_, i) => (
+        <div key={i} style={{ width: 7, height: 7, borderRadius: '50%', transition: 'all 0.3s', background: i === step ? GOLD : i < step ? GOLD + '55' : '#2A2A30' }} />
+      ))}
+    </div>
+  </div>
+);
+
+const Foot = ({ showBack = true, label = 'Continue', onNext, onBack, disabled }: any) => (
+  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 24px', borderTop: '0.5px solid #1E1E24', marginTop: 20 }}>
+    {showBack ? <button onClick={onBack} style={{ background: 'transparent', border: '0.5px solid #333338', color: '#7A7A80', padding: '10px 22px', borderRadius: 3, fontSize: 12, letterSpacing: '1.2px', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'inherit' }}>Back</button> : <div />}
+    <button onClick={onNext} disabled={disabled} style={{ background: disabled ? GOLD + '55' : GOLD, border: 'none', color: DARK, padding: '11px 30px', borderRadius: 3, fontSize: 12, letterSpacing: '1.5px', textTransform: 'uppercase', fontWeight: 500, cursor: disabled ? 'not-allowed' : 'pointer', fontFamily: 'inherit', transition: 'all 0.2s' }}>{label}</button>
+  </div>
+);
+
+const W = ({ children, step, total }: any) => (
+  <div style={{ background: DARK, borderRadius: 12, overflow: 'hidden' }}>
+    <Head step={step} total={total} /><div style={{ padding: '26px 24px 4px' }}>{children}</div>
+  </div>
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+const TOTAL = 9;
+
+const CamIcon = <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#4A4A50" strokeWidth="1.2" /><circle cx="8.5" cy="11" r="2" stroke="#4A4A50" strokeWidth="1" /><path d="M3 16l4-4 3 3 4-5 7 6" stroke="#4A4A50" strokeWidth="1" /></svg>;
+const CardIcon = <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#4A4A50" strokeWidth="1.2" /><path d="M7 10h10M7 13h7" stroke="#4A4A50" strokeWidth="1" strokeLinecap="round" /></svg>;
+
 export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdentifier?: string }) {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState<any>({
@@ -101,7 +229,6 @@ export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdent
   const [frontPreview, setFrontPreview] = useState<string | null>(null);
   const [backPreview, setBackPreview] = useState<string | null>(null);
 
-  const TOTAL = 9;
   const set = (k: string, v: any) => { setForm((p: any) => ({ ...p, [k]: v })); if (errors[k]) setErrors(e => ({ ...e, [k]: false })); };
   const needsPrevAddress = ['Less than 6 months', '6–12 months', '1–2 years'].includes(form.timeAtAddress);
   const needsPrevEmployer = ['Less than 6 months', '6–12 months', '1–2 years'].includes(form.timeAtJob);
@@ -136,6 +263,21 @@ export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdent
   const handleSubmit = async () => {
     if (!validateStep(8)) return;
     setSubmitting(true);
+
+    // Upload license images to Cloudinary if provided
+    let licenseFrontUrl = '';
+    let licenseBackUrl = '';
+    try {
+      if (form.licenseFront instanceof File) {
+        licenseFrontUrl = await uploadToCloudinary(form.licenseFront);
+      }
+      if (form.licenseBack instanceof File) {
+        licenseBackUrl = await uploadToCloudinary(form.licenseBack);
+      }
+    } catch (err) {
+      console.warn('Image upload failed, continuing without image URLs:', err);
+    }
+
     const payload: Record<string, any> = {
       firstName: form.firstName, lastName: form.lastName, dob: form.dob,
       email: form.email, phone: form.phone, contactMethod: form.contactMethod,
@@ -152,6 +294,8 @@ export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdent
       coApplicant: form.coApplicant, coName: form.coName, coPhone: form.coPhone, coEmail: form.coEmail,
       consentShare: String(form.consentShare), consentReferral: String(form.consentReferral),
       consentTerms: String(form.consentTerms), eSig: form.eSig,
+      licenseFrontUrl,
+      licenseBackUrl,
       serviceIdentifier: serviceIdentifier || 'Sales & Financing',
       source: 'Website Form'
     };
@@ -163,104 +307,6 @@ export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdent
     } catch (err) { console.error('Submission error:', err); }
     finally { setSubmitting(false); setSubmitted(true); }
   };
-
-  // ── Styles ──
-  const S: Record<string, React.CSSProperties> = {
-    input: { width: '100%', boxSizing: 'border-box', background: DARK3, border: `0.5px solid ${BORDER}`, borderRadius: 3, color: '#D8D4CA', padding: '12px 14px', fontSize: 14, fontFamily: 'inherit', outline: 'none', transition: 'border-color 0.2s' },
-    inputErr: { width: '100%', boxSizing: 'border-box', background: DARK3, border: `0.5px solid #e04848`, borderRadius: 3, color: '#D8D4CA', padding: '12px 14px', fontSize: 14, fontFamily: 'inherit', outline: 'none' },
-    label: { fontSize: 11, letterSpacing: '1.2px', textTransform: 'uppercase' as const, color: MUTED, display: 'block', marginBottom: 5 },
-    grid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '18px 14px' },
-    h2: { fontFamily: "'Cormorant Garamond',Georgia,serif", color: '#F0EBE0', fontSize: 24, fontWeight: 400, margin: '0 0 3px' },
-    sub: { fontSize: 13, color: '#6A6A70', margin: '0 0 22px' },
-  };
-
-  const Input = ({ label, placeholder, value, onChange, type = 'text', full = false, note = '', err = false }: any) => (
-    <div style={full ? { gridColumn: '1/-1' } : {}}>
-      <label style={S.label}>{label}</label>
-      <input type={type} placeholder={placeholder} value={value} onChange={(e: any) => onChange(e.target.value)}
-        style={err ? S.inputErr : S.input}
-        onFocus={(e: any) => { e.target.style.borderColor = GOLD + '88'; }}
-        onBlur={(e: any) => { e.target.style.borderColor = err ? '#e04848' : BORDER; }} />
-      {note && <p style={{ fontSize: 11, color: '#44444A', margin: '5px 0 0', lineHeight: 1.4 }}>{note}</p>}
-      {err && <p style={{ fontSize: 11, color: '#e04848', margin: '4px 0 0' }}>This field is required.</p>}
-    </div>
-  );
-
-  const Sel = ({ label, options, value, onChange, placeholder = 'Select...', full = false, err = false }: any) => (
-    <div style={full ? { gridColumn: '1/-1' } : {}}>
-      <label style={S.label}>{label}</label>
-      <select value={value} onChange={(e: any) => onChange(e.target.value)}
-        style={{ ...(err ? S.inputErr : S.input), appearance: 'none', WebkitAppearance: 'none', backgroundImage: `url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236E6E74' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 14px center', paddingRight: 36 }}>
-        <option value="">{placeholder}</option>
-        {options.map((o: string) => <option key={o} value={o}>{o}</option>)}
-      </select>
-      {err && <p style={{ fontSize: 11, color: '#e04848', margin: '4px 0 0' }}>This field is required.</p>}
-    </div>
-  );
-
-  const RG = ({ name, options, value, onChange, max }: any) => (
-    <div style={{ display: 'flex', gap: 8, marginTop: 6, maxWidth: max || 'none', flexWrap: 'wrap' as const }}>
-      {options.map((o: any) => (
-        <label key={o.v} style={{ textTransform: 'none', letterSpacing: 0, fontSize: 13, color: value === o.v ? '#D8D4CA' : '#8A8A90', display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', background: value === o.v ? '#1E1E24' : DARK3, border: `0.5px solid ${value === o.v ? GOLD + '55' : BORDER}`, borderRadius: 3, padding: '9px 16px', flex: 1, justifyContent: 'center', transition: 'all 0.2s', minWidth: 60 }}>
-          <input type="radio" name={name} checked={value === o.v} onChange={() => onChange(o.v)} style={{ accentColor: GOLD }} />{o.l}
-        </label>
-      ))}
-    </div>
-  );
-
-  const Head = () => (
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '18px 24px', borderBottom: '0.5px solid #1E1E24' }}>
-      <div style={{ color: LIGHT, fontSize: 17, letterSpacing: 3, fontWeight: 500 }}>
-        <span style={{ color: GOLD }}>AVNTS</span>
-        <span style={{ fontSize: 10, letterSpacing: '1.5px', color: '#5E5E64', marginLeft: 6, textTransform: 'uppercase', fontWeight: 400 }}>Auto Group</span>
-      </div>
-      <div style={{ display: 'flex', gap: 4 }}>
-        {Array.from({ length: TOTAL }).map((_, i) => (
-          <div key={i} style={{ width: 7, height: 7, borderRadius: '50%', transition: 'all 0.3s', background: i === step ? GOLD : i < step ? GOLD + '55' : '#2A2A30' }} />
-        ))}
-      </div>
-    </div>
-  );
-
-  const Foot = ({ showBack = true, label = 'Continue', onNext, disabled }: any) => (
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 24px', borderTop: '0.5px solid #1E1E24', marginTop: 20 }}>
-      {showBack ? <button onClick={back} style={{ background: 'transparent', border: '0.5px solid #333338', color: '#7A7A80', padding: '10px 22px', borderRadius: 3, fontSize: 12, letterSpacing: '1.2px', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'inherit' }}>Back</button> : <div />}
-      <button onClick={onNext || next} disabled={disabled} style={{ background: disabled ? GOLD + '55' : GOLD, border: 'none', color: DARK, padding: '11px 30px', borderRadius: 3, fontSize: 12, letterSpacing: '1.5px', textTransform: 'uppercase', fontWeight: 500, cursor: disabled ? 'not-allowed' : 'pointer', fontFamily: 'inherit', transition: 'all 0.2s' }}>{label}</button>
-    </div>
-  );
-
-  const Tag = ({ n }: any) => (
-    <div style={{ fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', color: GOLD, margin: '0 0 14px', padding: '3px 0', borderBottom: `0.5px solid ${GOLD}22`, display: 'inline-block' }}>
-      {n === 'final' ? 'Final step' : `Step ${n} of ${TOTAL}`}
-    </div>
-  );
-
-  const Div = () => <hr style={{ border: 'none', borderTop: '0.5px solid #1E1E24', margin: '20px 0' }} />;
-
-  const UZ = ({ label, icon, preview, onClick }: any) => (
-    <div onClick={onClick} style={{ border: preview ? `0.5px solid ${GOLD}44` : '1px dashed #2E2E34', borderRadius: 6, padding: preview ? 0 : '28px 16px', textAlign: 'center', background: DARK2, cursor: 'pointer', overflow: 'hidden', minHeight: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-      {preview ? <img src={preview} alt={label} style={{ width: '100%', height: 120, objectFit: 'cover', borderRadius: 6 }} /> : (
-        <>{icon}<p style={{ margin: '8px 0 0', fontSize: 12, color: '#5E5E64' }}>{label}</p><span style={{ fontSize: 11, color: GOLD, marginTop: 4 }}>Tap to upload</span></>
-      )}
-    </div>
-  );
-
-  const W = ({ children }: any) => (
-    <div style={{ background: DARK, borderRadius: 12, overflow: 'hidden' }}>
-      <Head /><div style={{ padding: '26px 24px 4px' }}>{children}</div>
-    </div>
-  );
-
-  const TrustBar = () => (
-    <div style={{ background: DARK, borderRadius: 12, padding: '14px 24px', marginTop: 24, border: '0.5px solid #1A1A20' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, flexWrap: 'wrap' }}>
-        <span style={{ fontSize: 11, color: '#5E5E64' }}>1,200+ clients matched</span>
-        <span style={{ fontSize: 11, color: GOLD }}>★★★★★ <span style={{ color: '#8A8A90' }}>4.9 on Google</span></span>
-        <span style={{ fontSize: 11, color: '#5E5E64' }}>Trusted partner network</span>
-        <span style={{ fontSize: 11, color: '#5E5E64' }}>Free to apply</span>
-      </div>
-    </div>
-  );
 
   if (submitted) return (
     <div style={{ maxWidth: 600, margin: '0 auto', padding: '2rem 1rem', fontFamily: "'Outfit', sans-serif" }}>
@@ -276,12 +322,9 @@ export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdent
     </div>
   );
 
-  const CamIcon = <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#4A4A50" strokeWidth="1.2" /><circle cx="8.5" cy="11" r="2" stroke="#4A4A50" strokeWidth="1" /><path d="M3 16l4-4 3 3 4-5 7 6" stroke="#4A4A50" strokeWidth="1" /></svg>;
-  const CardIcon = <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#4A4A50" strokeWidth="1.2" /><path d="M7 10h10M7 13h7" stroke="#4A4A50" strokeWidth="1" strokeLinecap="round" /></svg>;
-
   const pages = [
     // Step 0: ID
-    <W key={0}><Tag n={1} />
+    <W key={0} step={step} total={TOTAL}><Tag n={1} total={TOTAL} />
       <h2 style={S.h2}>Verify your identity</h2>
       <p style={S.sub}>Upload your driver's license so our partners can verify your application</p>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginBottom: 20 }}>
@@ -293,11 +336,11 @@ export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdent
         <Input label="Last name" placeholder="Rothwell" value={form.lastName} onChange={(v: string) => set('lastName', v)} err={errors.lastName} />
         <Input label="Date of birth" value={form.dob} onChange={(v: string) => set('dob', v)} type="date" full err={errors.dob} />
       </div>
-      <Foot showBack={false} />
+      <Foot showBack={false} onNext={next} onBack={back} />
     </W>,
 
     // Step 1: Contact
-    <W key={1}><Tag n={2} />
+    <W key={1} step={step} total={TOTAL}><Tag n={2} total={TOTAL} />
       <h2 style={S.h2}>How can we reach you?</h2>
       <p style={S.sub}>We'll only contact you about your application</p>
       <div style={{ ...S.grid, gridTemplateColumns: '1fr' }}>
@@ -306,11 +349,11 @@ export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdent
         <div><label style={S.label}>Preferred contact method</label>
           <RG name="contactMethod" value={form.contactMethod} onChange={(v: string) => set('contactMethod', v)} options={[{ v: 'phone', l: 'Phone' }, { v: 'email', l: 'Email' }, { v: 'text', l: 'Text' }]} /></div>
       </div>
-      <Foot />
+      <Foot onNext={next} onBack={back} />
     </W>,
 
     // Step 2: Address
-    <W key={2}><Tag n={3} />
+    <W key={2} step={step} total={TOTAL}><Tag n={3} total={TOTAL} />
       <h2 style={S.h2}>Where do you live?</h2>
       <p style={S.sub}>Lenders require your current residential address</p>
       <div style={S.grid}>
@@ -331,7 +374,7 @@ export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdent
           <Sel label="Province" options={provinces} value={form.prevProvince} onChange={(v: string) => set('prevProvince', v)} />
           <Input label="Postal code" placeholder="" value={form.prevPostal} onChange={(v: string) => set('prevPostal', v)} />
         </div></>}
-      <Foot />
+      <Foot onNext={next} onBack={back} />
     </W>,
 
     // Step 3: Social proof
@@ -372,8 +415,8 @@ export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdent
     </div>,
 
     // Step 4: Employment
-    <W key={4}><Tag n={5} />
-      <h2 style={S.h2}>Employment & income</h2>
+    <W key={4} step={step} total={TOTAL}><Tag n={5} total={TOTAL} />
+      <h2 style={S.h2}>Employment &amp; income</h2>
       <p style={S.sub}>Helps our partners find you the best rate</p>
       <div style={S.grid}>
         <Sel label="Employment status" options={empStatuses} value={form.empStatus} onChange={(v: string) => set('empStatus', v)} full err={errors.empStatus} />
@@ -391,12 +434,12 @@ export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdent
           <Input label="Previous job title" placeholder="" value={form.prevJobTitle} onChange={(v: string) => set('prevJobTitle', v)} />
           <Sel label="Time at previous job" options={timeOptions} value={form.prevTimeAtJob} onChange={(v: string) => set('prevTimeAtJob', v)} full />
         </div></>}
-      <Foot />
+      <Foot onNext={next} onBack={back} />
     </W>,
 
     // Step 5: Credit
-    <W key={5}><Tag n={6} />
-      <h2 style={S.h2}>Credit & financial profile</h2>
+    <W key={5} step={step} total={TOTAL}><Tag n={6} total={TOTAL} />
+      <h2 style={S.h2}>Credit &amp; financial profile</h2>
       <p style={S.sub}>Be honest, our partners work with all credit situations</p>
       <div style={S.grid}>
         <Sel label="Estimated credit score" options={creditRanges} value={form.creditScore} onChange={(v: string) => set('creditScore', v)} full err={errors.creditScore} />
@@ -407,11 +450,11 @@ export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdent
       </div>
       <Div />
       <Input label="Social Insurance Number (optional)" placeholder="XXX XXX XXX" value={form.sin} onChange={(v: string) => set('sin', v)} full note="Only required if you'd like to authorize a credit check. Your SIN is encrypted and never stored." />
-      <Foot />
+      <Foot onNext={next} onBack={back} />
     </W>,
 
     // Step 6: Vehicle
-    <W key={6}><Tag n={7} />
+    <W key={6} step={step} total={TOTAL}><Tag n={7} total={TOTAL} />
       <h2 style={S.h2}>What are you looking for?</h2>
       <p style={S.sub}>We'll match you with options from our partner network</p>
       <div style={S.grid}>
@@ -433,11 +476,11 @@ export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdent
         <Sel label="Condition" options={tradeConditions} value={form.tradeCondition} onChange={(v: string) => set('tradeCondition', v)} />
         <Input label="Amount owing" placeholder="$0" value={form.tradeOwing} onChange={(v: string) => set('tradeOwing', v)} />
       </div>}
-      <Foot />
+      <Foot onNext={next} onBack={back} />
     </W>,
 
     // Step 7: Financing
-    <W key={7}><Tag n={8} />
+    <W key={7} step={step} total={TOTAL}><Tag n={8} total={TOTAL} />
       <h2 style={S.h2}>Financing preferences</h2>
       <p style={S.sub}>No commitment, just helps us find the best match</p>
       <div style={S.grid}>
@@ -472,12 +515,12 @@ export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdent
         <Input label="Email" placeholder="email@example.com" value={form.coEmail} onChange={(v: string) => set('coEmail', v)} />
         <Sel label="Relationship" options={['Spouse', 'Common-law partner', 'Parent', 'Sibling', 'Friend', 'Other']} value={form.coRelationship} onChange={(v: string) => set('coRelationship', v)} full />
       </div>}
-      <Foot />
+      <Foot onNext={next} onBack={back} />
     </W>,
 
     // Step 8: Consent
-    <W key={8}><Tag n="final" />
-      <h2 style={S.h2}>Review & submit</h2>
+    <W key={8} step={step} total={TOTAL}><Tag n="final" total={TOTAL} />
+      <h2 style={S.h2}>Review &amp; submit</h2>
       <p style={S.sub}>You're one step away from getting matched</p>
       {[
         { k: 'consentShare', t: 'I consent to AVNTS Auto Group sharing my personal and financial information with its trusted lending and dealership partners for the purpose of arranging vehicle financing on my behalf.' },
@@ -496,7 +539,7 @@ export default function SalesFinancingForm({ serviceIdentifier }: { serviceIdent
         {errors.eSig && <p style={{ fontSize: 11, color: '#e04848', margin: '4px 0 0' }}>Please type your full legal name as your e-signature.</p>}
       </div>
       <p style={{ fontSize: 11, color: '#44444A', lineHeight: 1.6, marginTop: 16 }}>By submitting this application, you authorize AVNTS Auto Group to share your information with our network of financing and dealership partners. Your data is protected with 256-bit encryption. All financing is subject to credit approval (OAC).</p>
-      <Foot label={submitting ? 'Submitting...' : 'Submit application'} onNext={handleSubmit} disabled={submitting || !(form.consentShare && form.consentReferral && form.consentTerms && form.eSig.trim().length > 2)} />
+      <Foot label={submitting ? 'Submitting...' : 'Submit application'} onNext={handleSubmit} onBack={back} disabled={submitting || !(form.consentShare && form.consentReferral && form.consentTerms && form.eSig.trim().length > 2)} />
     </W>,
   ];
 

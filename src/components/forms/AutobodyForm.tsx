@@ -4,6 +4,27 @@ import { FormHeader, FormSocialProof, FormFooter } from './FormBranding';
 const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/dpEhUNA24tzTJXmQ2EBH/webhook-trigger/lFwNcdh8m73nk7G4n7AI';
 const SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbzlN1LezMPwnkOJgCB90vSxLtH02GvtkQAKU4Fr--4UAJgtA-Hxecx3fNdBG5MpBKdq/exec';
 
+// ── Cloudinary image upload ───────────────────────────────────────────────────
+// 1. Create a free account at https://cloudinary.com
+// 2. Go to Settings → Upload → Upload presets → Add unsigned preset
+// 3. Fill in CLOUDINARY_CLOUD_NAME and CLOUDINARY_UPLOAD_PRESET below
+const CLOUDINARY_CLOUD_NAME = 'PASTE_YOUR_CLOUD_NAME';
+const CLOUDINARY_UPLOAD_PRESET = 'PASTE_YOUR_UNSIGNED_PRESET';
+
+async function uploadToCloudinary(file: File): Promise<string> {
+  const fd = new FormData();
+  fd.append('file', file);
+  fd.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+  const res = await fetch(
+    `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+    { method: 'POST', body: fd }
+  );
+  if (!res.ok) throw new Error('Cloudinary upload failed');
+  const data = await res.json();
+  return data.secure_url as string;
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 const REPAIR_TYPES = ['Collision repair', 'Dent removal', 'Scratch / paint', 'Bumper repair', 'Full respray', 'Fender repair', 'Frame straightening', 'Hail damage', 'Rust repair', 'Panel replacement', 'Headlight restore', 'Other'];
 const DAMAGE_ZONES = ['Front bumper', 'Rear bumper', 'Driver side', 'Passenger side', 'Hood', 'Trunk', 'Roof', 'Front fender L', 'Front fender R', 'Rear quarter L', 'Rear quarter R', 'Door(s)'];
 const TIMELINES = ['ASAP', 'This week', 'Next week', 'Flexible', 'Just need a quote'];
@@ -77,12 +98,20 @@ export default function AutobodyForm({ serviceIdentifier }: { serviceIdentifier?
     setSubmitting(true);
 
     try {
-      // Step 1: Upload images to GHL if any, collect URLs as strings
+      // Upload all selected photos to Cloudinary and collect their URLs
       let photoUrls = '';
       if (files.length > 0) {
-        // For each file, create a FormData and POST to GHL so they are processed
-        // GHL doesn't return image URLs via no-cors, so we note them by name
-        photoUrls = files.map(f => f.name).join(', ');
+        const uploadResults = await Promise.allSettled(
+          files.map(f => uploadToCloudinary(f))
+        );
+        const successfulUrls = uploadResults
+          .filter((r): r is PromiseFulfilledResult<string> => r.status === 'fulfilled')
+          .map(r => r.value);
+        photoUrls = successfulUrls.join(', ');
+        if (!photoUrls) {
+          // Fallback: at least log the file names if upload failed
+          photoUrls = files.map(f => f.name).join(', ');
+        }
       }
 
       const payload: any = {
@@ -99,7 +128,7 @@ export default function AutobodyForm({ serviceIdentifier }: { serviceIdentifier?
         insurance: formData.insurance,
         needsTow: String(formData.needsTow),
         pickupAddress: formData.pickupAddress,
-        photoFileNames: photoUrls,
+        photoUrls,
         serviceIdentifier: serviceIdentifier || 'Autobody & Collision',
         source: 'Website Form'
       };
