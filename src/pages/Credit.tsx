@@ -61,9 +61,36 @@ const Credit = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/dpEhUNA24tzTJXmQ2EBH/webhook-trigger/lFwNcdh8m73nk7G4n7AI';
+  const SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbzlN1LezMPwnkOJgCB90vSxLtH02GvtkQAKU4Fr--4UAJgtA-Hxecx3fNdBG5MpBKdq/exec';
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const payload = {
+      ...formData,
+      source: 'Credit Application Form',
+      serviceIdentifier: 'Credit Approval',
+    };
+
+    const queryParams = new URLSearchParams();
+    Object.keys(payload).forEach(key => queryParams.append(key, String(payload[key as keyof typeof payload])));
+
+    try {
+      // 1. Send to GHL
+      await fetch(GHL_WEBHOOK, { method: 'POST', body: queryParams, mode: 'no-cors' });
+
+      // 2. Send to Google Sheets
+      await fetch(SHEETS_WEBHOOK, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch (error) {
+      console.error('Webhook submission error:', error);
+    }
 
     const templateParams = {
       from_firstName: formData.firstName,
@@ -241,15 +268,15 @@ const Credit = () => {
                       name="citizenshipStatus"
                       onValueChange={(value) => handleChange({ target: { name: 'citizenshipStatus', value } } as any)}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger className="input-field flex h-auto min-h-[42px] items-center justify-between bg-white text-black border-[var(--luxury-gold)]">
                         <SelectValue placeholder="Select citizenship status" />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="citizen">Canadian Citizen</SelectItem>
-                        <SelectItem value="permanent_resident">Permanent Resident</SelectItem>
-                        <SelectItem value="work_permit">Work Permit</SelectItem>
-                        <SelectItem value="study_permit">Study Permit</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
+                      <SelectContent className="bg-white border border-gray-200 shadow-xl z-50 text-black">
+                        <SelectItem value="citizen" className="cursor-pointer focus:bg-gray-100 py-2">Canadian Citizen</SelectItem>
+                        <SelectItem value="permanent_resident" className="cursor-pointer focus:bg-gray-100 py-2">Permanent Resident</SelectItem>
+                        <SelectItem value="work_permit" className="cursor-pointer focus:bg-gray-100 py-2">Work Permit</SelectItem>
+                        <SelectItem value="study_permit" className="cursor-pointer focus:bg-gray-100 py-2">Study Permit</SelectItem>
+                        <SelectItem value="other" className="cursor-pointer focus:bg-gray-100 py-2">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>

@@ -21,9 +21,40 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/dpEhUNA24tzTJXmQ2EBH/webhook-trigger/lFwNcdh8m73nk7G4n7AI';
+  const SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbzlN1LezMPwnkOJgCB90vSxLtH02GvtkQAKU4Fr--4UAJgtA-Hxecx3fNdBG5MpBKdq/exec';
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const payload = {
+      firstName: formData.name.split(' ')[0] || formData.name,
+      lastName: formData.name.split(' ').slice(1).join(' ') || '',
+      phone: formData.phone,
+      email: formData.email,
+      source: 'Contact Form',
+      serviceIdentifier: formData.subject || 'Contact Inquiry',
+      description: formData.message,
+    };
+
+    const queryParams = new URLSearchParams();
+    Object.keys(payload).forEach(key => queryParams.append(key, String(payload[key as keyof typeof payload])));
+
+    try {
+      // 1. Send to GHL
+      await fetch(GHL_WEBHOOK, { method: 'POST', body: queryParams, mode: 'no-cors' });
+
+      // 2. Send to Google Sheets
+      await fetch(SHEETS_WEBHOOK, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch (error) {
+      console.error('Webhook submission error:', error);
+    }
 
     const templateParams = {
       from_firstName: formData.name.split(' ')[0] || formData.name,
